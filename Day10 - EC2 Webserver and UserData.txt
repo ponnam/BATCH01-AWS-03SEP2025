@@ -1,0 +1,81 @@
+1. Host a basic HTML Website using Amazon Linux OS
+	a) Create a Linux EC2 instance, allow SSH, HTTP & HTTPS traffic.
+	b) Install webserver (httpd)
+	c) Start the httpd service
+	d) Configure the httpd service to start automatically
+	e) Host the website
+		- Create a webpage "index.html"
+
+
+2. Access the website using the Public IP address from anywhere
+
+
+
+
+# Install the httpd web server
+
+	sudo yum install httpd
+
+# Check the httpd service status
+
+	sudo service httpd status
+
+# Start the httpd service
+	
+	sudo service httpd start
+
+# Configure the httpd service to be started automatically
+
+	sudo chkconfig httpd on
+
+# Host a simple webpage index.html
+
+	- Create a web page "index.html" in the directory /var/www/html
+
+		cd /var/www/html
+		
+		sudo vi index.html
+		write some data
+		save and close    --> press esc  --> :wq --> press enter
+
+
+
+User Data / Boot-Strap Script:
+------------------------------
+
+--> is a way to automatically run commands or scripts when an ec2 instance is launched for the first time.
+
+3. Create a Linux EC2 instance and provide userdata to host a simple website as above.
+
+
+#!/bin/bash
+sudo yum install httpd -y
+sudo service httpd start
+sudo chkconfig httpd on
+sudo echo "Hello, This is AWS EC2 User Data!!" > /var/www/html/index.html
+
+
+--> We have an option to increase or reduce the resources on EC2 without loosing the data. Is called as Vertical Scaling
+
+--> by changing the instance type we can adjust the capacity of the EC2 instance
+
+--> To change the instance type, we must stop the EC2 instance.
+
+
+4. Change the instance type from t2.micro to t3.large and observe that we didn't loose any data.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

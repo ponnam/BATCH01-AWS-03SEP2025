@@ -1,0 +1,151 @@
+Identity Access Management - IAM:
+---------------------------------
+
+Management console access type
+
+1. create a new IAM user "user1" with default option.
+
+2. Observe the access level provided to the user "user1"
+
+Console sign-in URL : https://892577687455.signin.aws.amazon.com/console
+UserName : user1
+Password : y5xGH=9]Q*
+
+3. Create another user "user2" and provide full access o all AWS Services (Administrator)
+
+TIP: Assign a Policy with admin access
+
+	- Attach a policy
+	- add to a group
+	- Copy permissions
+
+
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": "*",
+            "Resource": "*"
+        }
+    ]
+}
+
+
+--> Tag is a Key-Value Pair
+
+	ex: 
+
+4. Login as user2 and verify that he has full access on all AWS services
+
+5. Create a user "user3" and assign Read-Only access on IAM services using custom policy
+	a) Create an IAM Policy "Read-Only-Access-IAM"
+	b) Create IAM user "user3" and attach the above custom policy
+
+
+6. Login as user3 and verify that the user got read-only access on IAM Service only
+
+7. Create user Group "Administrators" and attach administrator access policy to this group.
+
+8. Create a new user "user4" and provide administrator access - By adding user4 into the group "Administrators"
+
+9. Login as "user4" and verify the administrator access
+
+10. Add an existing user "user1" to the above group and verify that he got administrator access on all services.
+
+11. Create a user "user5" and assign the same permissions as "user3" using copy Permissions feature.
+
+
+
+--> programmatic acess type allows the user to login to AWS account using CLI, SDK or any other development tools.
+
+--> They use "Acces Key ID" and "Secret Access key" for authentication instead of username + Password combination
+
+12. Create a user "user11" with Programmatic access type and provide administrator access.
+
+	a) Create user11 without any access type and assign all req permissions
+	b) generate pair of access key ID & secret access key.
+
+Access Key: AKIA47UOGU6PUZJ6PXVT
+Secret Access Key : 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
+
+13. Login as user11 using AWS CLI tools.
+	a) Download and install AWS CLI tools  -- http://aws.amazon.com/cli
+	b) Configure the CLI with your credentials
+
+		aws configure
+
+
+ref: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
+
+
+Note: while installing the AWS CLI tools, it is recommended to close the cmd prompt
+
+
+14. View the list of IAM users using AWS CLI
+
+	aws iam list-users
+
+
+15. create a new user "user12" using cli
+
+
+	   aws iam create-user --user-name user12
+
+
+16. reset the forgotten password of an IAM user "user3"
+
+7yQ50Vb9(4
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

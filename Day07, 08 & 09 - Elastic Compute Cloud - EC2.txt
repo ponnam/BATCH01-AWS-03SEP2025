@@ -1,0 +1,130 @@
+Elastic Compute Cloud - EC2:
+----------------------------
+
+1. Create an EC2 instance as per the below requirements
+
+	- Region		--	N.Virginia (us-east-1)
+	- Operating System	--	Windows Server 2019
+	- Instance Type		--	t3.micro/t2.micro   (1cpu, 1gb)
+	- Storage (root volume)	--	30 GB
+	- KeyPair		--	NVirginia-Sep03
+	- Security Group	--	Windows RDP (3389) from Anywhere
+	- Public IP		--	Auto-Assign Public IP
+
+	- Purchasing Model	--	On-Demand
+	- Tenancy Option	-- 	Shared
+
+
+2. Login to Windows EC2 instance using RDP Protocol
+
+	Public IP	: 54.176.83.149
+	Private IP	: 172.31.18.125
+	username	: Administrator
+	Password	: Jjie.HkRwC63Fr4En&JlJbre%=ED@xAx
+
+Note: To login to windows machine using RDP protocol, we must use any RDP Client (Remote Desktop Connection)
+
+3. Delete the Windows EC2 instance, to avoid unnecessary billing.
+
+4. Create an EC2 instance as per the below requirements
+
+	- Region		--	N.Virginia (us-east-1)
+	- Operating System	--	Amazon Linux 2023
+	- Instance Type		--	t3.micro/t2.micro   (1cpu, 1gb)
+	- Storage (root volume)	--	12GB or Minimum
+	- KeyPair		--	NVirginia-Sep03
+	- Security Group	--	Linux SSH (22) from anywhere
+	- Public IP		--	Auto-Assign Public IP
+
+	- Purchasing Model	--	On-Demand
+	- Tenancy Option	-- 	Shared
+
+5. Login to Linux Machine using username and Private key combination.
+	a) Download and install any SSH Client software (putty.org)
+	b) Save the private key from keypair in .ppk format using PuttyGen tool
+	c) Login to Linux Instance using Putty tool
+
+
+
+
+--> The moment we install the putty software we get the following tools on your computer
+
+	- Putty		--> SSH Client, can be used to login to Linux machines
+	- Puttygen	--> Public & Private Key pair generator. We can get the private key from the keypair in .ppk format
+
+
+
+pwd  --> present working directory
+ 
+cd --> change directory
+
+
+6. Login to the Linux EC2 instance using instance connect feature.
+
+
+--> Auto-Assign Public IP, Will change when the Ec2 instance gets stopped and start. Every time, you stop and start the EC2 instance, EC2 instance will get a new public IP.
+
+
+Elastic IP Address:
+-------------------
+
+--> It is a static Public IP address, will never ever changes automatically
+
+--> Even if you stop and start the EC2 instance, instance will get the same Public IP address
+
+--> Elastic IP address is chargeable, if we dont attach to any running EC2 instance.
+
+
+Different phases to use the elastic IP address
+
+	- Allocate  --> We will request AWS, they will allocate an Elastic IP to your Account.
+	- Attach    --> Assign the Elastic IP address to any EC2 instance
+	- Detach    --> Remove the IP address from Ec2 instance and kept unused
+	- Release   --> Give back the elastic IP to AWS.
+
+
+7. Note down the Public IP of EC2 instance, then Stop and start the EC2 instance
+
+	Public IP	: 54.177.31.251
+	Private IP	: 172.31.24.190
+
+8. Observe the Public IP of the EC2 instance, and confirm that a new IP has been assigned.
+
+	Public IP	: 184.72.10.107
+	Private IP	: 172.31.24.190
+
+Note: Auto-Assigned Public IPs never change if we restart/reboot the EC2 instance.
+
+
+9. Use Elastic IP address for the EC2 instance and confirm that it is fixed even we stop and start the instances
+
+	a) Allocate the ELastic IP (EIP)   -- 13.57.138.242
+	b) Attach the EIP to EC2 instance
+	c) Stop and Start the EC2 instance
+	
+
+10. Release the ELastic IP to avoid unnecessary charges
+	a) Detach the Elastic IP
+	b) Release the Elastic IP
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

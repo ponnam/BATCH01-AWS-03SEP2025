@@ -1,0 +1,107 @@
+Amazon Machine Image - AMI
+---------------------------
+
+--> AMI provides the Operating system, Configuration and optional software for the EC2 instance.
+
+--> Based on the selection of the AMI, we will get the required OS onto the EC2 instance.
+
+--> AWS offers multiple variants of AMI, also we can create our own AMI as per our requirement.
+
+
+
+--> FIrst, we need to create an EC2 instance using any existing AMI. Setup the EC2 instance as per yout requirement.
+
+--> Create an AMI from the prepared EC2 instance.
+
+--> From this custom AMI, all the EC2 instances will represent the state as the first EC2 instance
+
+	- OS
+	- Software
+	- Configuration
+	- Data
+
+
+1. Create an AMI, which can host a simple html website automatically
+	a) Create an EC2 instance using Amazon Linux 2023 OS AMI
+	b) Login to EC2, and install, configure everything
+		- Install httpd service
+		- Start the httpd service
+		- configure the httpd service to be started automatically
+		- create index.html webpage in the directory /var/www/html
+	c) Verify that the webpage is accessible
+	d) Create the AMI "Linux WebServer" from the EC2 instance
+
+
+2. Create a new EC2 instance, using the Custom AMI "Linux Webserver" and verify that the website is hosted automatically.
+
+
+Note: AMI is a region specific, AMI which was created in N.California region can be used to create EC2 instances in the same region. Not in any other region.
+
+
+--> What if i have a requirement to create ec2 using the AMI in a different region?
+
+--> We can copy the AMI from one region to any region. data transfer charges applicable.
+
+--> AMI are maintained as a snapshot in the backend, how much storage is utilized to keep the snapshot for that GB storage is chargeable.
+
+
+3. Copy the AMI from N.California to Hyderabad region
+
+4. create an EC2 instance in Hyderabad region using the copied custom AMI.
+
+
+--> By Default the custom AMIs are private in nature, and can be used in the same AWS account.
+
+--> We can convert the visibility of Custom AMI from Private to public, so that anyone in that region can use our custom AMI to create the EC2 instance in their AWS accounts
+
+5. Convert the AMI visibility from private to public 
+
+	ami-08c1be8da284bc3d0
+
+6. Delete the AMI
+	- Deregister AMI, select Delete associated snapshot
+	- Deregister AMI --> Delete the snapshot manually
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

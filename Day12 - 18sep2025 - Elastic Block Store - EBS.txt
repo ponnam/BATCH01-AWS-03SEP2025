@@ -1,0 +1,85 @@
+Elastic Block Store - EBS:
+--------------------------
+
+--> EBS offers Block based storage, and can e used as storage for EC2 instances
+
+--> We call the EBS storage as a Volume.
+
+--> There are 2 type of Volumes
+	- root volume --> Is the volume in which the OS gets installed (ex: C:\ drive)
+	- Additional (EBS) volume --> Extra volumes for the INstance to store logs, data etc.. (ex: D:\, E:\ etc..)
+
+--> EBS volumes can be attached to the EC2 instance in the same AZ
+
+
+Types of EBS Volumes:
+---------------------
+
+	- General Purpose SSD
+			- gp2
+			- gp3
+	- Provisional IOPS SSD
+			- io1
+			- io2
+	- Throughput Optimized HDD - st1
+
+	- Cold Storage - sc1
+	
+	- Magentic - standard
+
+--> in SSD, Performance can be measured in terms of IOPS
+
+--> In HDD, Performance can be measured in terms of Throughput MB/Sec
+
+
+1. Create 2 Windows EC2 instance in us-east-1a & us-east-1b AZ
+
+2. Create EBS volumes of different types and observe the characteristics.
+
+3. Attach 1GB volume to Server1, both are in us-east-1a AZ
+
+4. Login to Server1 and observe the 1GB storage.
+
+	Public IP	: 54.81.181.209
+	UserName	: Administrator
+	Password	: Oc-YOJtuMC%)!H&Yq-Z(wi6x9ed;XXb=
+
+
+--> By default, all new Volumes are connected to windows EC2 instances in Offline Mode.
+
+--> Those EBS volumes are available without any filesystem.
+
+
+5. Follow the below steps to make the 1GB attached EBS volume usable
+
+	- Make it Online
+	- Create Partition and filesystem.
+
+
+	diskmgmt.msc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+Snapshot:
+----------
+
+--> Snapshot is the process of creating Image level backup of the EBS volume
+
+--> Snapshot contains all the data exists on the EBS volume at the time of Snapshot creation
+
+Types of Snapshots:
+-------------------
+
+	- Manual Snapshot
+	- Automated Snapshot
+
+--> Manual snapshot is the snapshot which we will create whenever the snashot is required.
+
+--> Automated snapshots are scheduled to create the snapshot automatically at a regular intervals of time.
+
+--> Already we know that we can attach the EBS volumes to the ec2 instances in the same availability zone.
+
+--> We can create the snapshot of the EBS volume, and the snapshot contains all the data available on the EBS volume.
+
+--> From the snapshot, we can create the EBS volume in any availability zone of that specific region.
+
+
+   Existing EBS Volume in us-east-1a  --> Create snapshot --> Create EBS volume in us-east-1b
+
+--> Also, if we need the volume in a different region, then we can copy the snapshot to the required region and then we can create the volume in that region's availability zone.
+
+
+
+1. Create the snapshot of the EBS volume 1GB which is in us-east-1a (Contains 10 text files)
+
+2. Create a new EBS volume "1gb-gp2-1b" using the snapshot in us-east-1b AZ
+
+3. Attach the newly created EBS volume to SERVER2, which is in us-east-1b and observe that the volume contains 10 text files.
+
+	Public IP	: 13.221.192.12
+	UserName	: Administrator
+	Password	: ax4RtPdl8Wg6VhT$TXYt)xTH(8hYr!j)
+
+
+4. Create a new EBS volume in Hyderabad Region and attach the olume to the EC2 instance in Hyderabad 1b AZ
+	a) copy the snapshot from N.Virgina to Hyderabad region
+	b) Create EBS volume using the copied snapshot and select ap-south-1b AZ
+	c) Attach the EBS volume to the ec2 instance in ap-south-2b AZ
+
+
+5. Create a life cycle policy for daily automated snapshot for the below requirement
+	- Snapshot time		: 06:30 AM Daily
+	- Retention period	: 30 Days
+	- Target		: Include the EBS volumes for automated snapshot which are having 				  a tag "Backup:Yes"
+
+6. verify that the automated snapshots are getting created only for the EBS volumes which are having the tag "Backup:Yes"

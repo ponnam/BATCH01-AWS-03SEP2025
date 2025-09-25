@@ -1,0 +1,39 @@
+EBS Volume Management:
+----------------------
+
+--> Volume Management allows us to manage the size or the type of the EBS volumes without any data loss
+
+--> We can increase the size of the EBS volume, but we cannot reduce the size of the EBS volume
+
+	ex: 1GB --> 5 GB ---- Possible
+	    5 GB --> 2 GB --- Not Possible
+
+
+--> We can change the type of the EBS volume from any type to any type of the Volume -- NO restrictions
+
+
+--> We cannot modify the volume twice in a 6 hour windows.
+
+
+1. Modify the volume size from 1GB to 2GB and observe that there is no data loss
+	a) Modify the 1GB volume and set the size as 2GB
+		Newly added 1GB is Unallocated Storage
+	b) Login to the windows server to which the volume is attached, and extend the existing 1GB volume using the newly added 1GB unallocated storage to form 2GB single Partition.
+	c) Observe that there is no data loss.
+
+
+2. Change the Type of the EBS Volume from io1 to gp3
+
+3. Modify the Volume again and observe that there is a restriction to wait for at least 6 hours
+
+4. Clean up all EBS and EC2 resources.
+
+
+
+
+
+
+
+
+
+

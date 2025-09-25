@@ -1,0 +1,74 @@
+Simple Storage Service - S3:
+----------------------------
+
+--> S3 is AWS managed, Highly Available, Highly Reliable & Highly Secured Object based storage.
+
+--> S3 offers 99.99% Availability and 99.999999999% of durability
+
+--> There is a chance of loosing 1 object out of 10,000,000,000 objects stored for 10,000 Years
+
+--> Object is nothing but a file -- image, audio, video, pdf, doc etc...
+
+--> Object based storage can be used to store the objects only, cannot be used to install OS or softwares.
+
+--> S3 cannot be used as a storage drive for the EC2 instances
+
+--> we can compare the S3 storage with --- google drive, one drive, Dropbox....
+
+--> S3 storage is referred as a Bucket.
+
+--> Bucket is the container in which all the objects are stored.
+
+--> S3 supports unlimited storage space, and we will be charged based on the actual usage
+
+--> Each object must not exceed 5TB size.
+
+--> For every bucket we need to assign a name, and we must follow naming rules.
+
+
+1. Create S3 bucket in N.Virginia Region "myfirsts3bucket24sep2025" and observe the naming rules.
+
+	- Bucket name must be unique across all the regions and accounts
+	- Bucket Name must be between 3 and 63 characters
+	- Bucket name must not contain uppercase letters
+	- Bucket name can contain lowercase letters, numbers, Period (.) and Dash (-)
+	- Bucket name must start and end with either lowercase letter or number
+	- Bucket name doesn't support consecutive periods
+	- Bucket name must not looks like an IP Address (ex: 192.168.2.1 )
+
+
+--> byDefault, S3 bucket will be created with ACLs disabled and "Block all Public Access" Enabled. means no object in that S3 bucket can be publicly accessible.
+
+2. Upload an object into S3 bucket using all default options.
+
+Object url: https://myfirsts3bucket24sep2025.s3.us-east-1.amazonaws.com/Image.jpg
+
+
+--> Object URL can be used to access the object.
+
+--> By default, all the objects are Private Objects.
+
+
+3. Verify that the uploaded object is Private object, by accessing the object url in the browser.
+
+
+--> We can use ACLs, to convert any object into public Object
+
+
+4. Convert the object "Image.jpg" into public Object.
+	a. Enable ACLs on the S3 bucket.
+	b. Disable "Block all public Access" option on the S3 bucket
+	c. Make the object as Public using ACL
+
+
+
+
+
+
+
+
+
+
+
+
+

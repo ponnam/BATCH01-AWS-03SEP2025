@@ -9,7 +9,7 @@ Management console access type
 
 Console sign-in URL : https://892577687455.signin.aws.amazon.com/console
 UserName : user1
-Password : y5xGH=9]Q*
+Password : 
 
 3. Create another user "user2" and provide full access o all AWS Services (Administrator)
 
@@ -66,9 +66,8 @@ TIP: Assign a Policy with admin access
 	a) Create user11 without any access type and assign all req permissions
 	b) generate pair of access key ID & secret access key.
 
-Access Key: AKIA47UOGU6PUZJ6PXVT
-Secret Access Key : 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
-
+Access Key: 
+Secret Access Key : 
 13. Login as user11 using AWS CLI tools.
 	a) Download and install AWS CLI tools  -- http://aws.amazon.com/cli
 	b) Configure the CLI with your credentials
@@ -95,7 +94,6 @@ Note: while installing the AWS CLI tools, it is recommended to close the cmd pro
 
 16. reset the forgotten password of an IAM user "user3"
 
-7yQ50Vb9(4
 
 
 

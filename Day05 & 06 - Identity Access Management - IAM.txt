@@ -66,8 +66,7 @@ TIP: Assign a Policy with admin access
 	a) Create user11 without any access type and assign all req permissions
 	b) generate pair of access key ID & secret access key.
 
-Access Key: 
-Secret Access Key : 
+
 13. Login as user11 using AWS CLI tools.
 	a) Download and install AWS CLI tools  -- http://aws.amazon.com/cli
 	b) Configure the CLI with your credentials

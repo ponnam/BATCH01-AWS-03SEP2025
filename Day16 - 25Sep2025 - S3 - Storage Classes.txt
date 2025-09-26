@@ -1,0 +1,144 @@
+S3 - Storage Classes:
+---------------------
+
+--> S3 offers different storage classes, which can be used for different use cases
+
+
+	- S3 Standard
+	- S3 Intelligent-Tiering
+	- S3 Standard-IA
+	- S3 One Zone-IA
+	- Glacier Instant retrieval
+	- Glacier Flexible retrieval
+	- Glacier Deep Archive
+	- Express One Zone
+
+
+Standard:
+---------
+
+--> Designed for General purpose storage for frequently accessed data with immediate access.
+
+	Availability Zones 		-	≥ 3 AZ
+	Min Storage Duration		-	NA
+	Min billable object size		-	NA			
+	Monitoring &auto-tiering fees	-	NA
+	Retrieval fees			-	NA
+
+Standard-IA (Infrequent Access):
+--------------------------------
+
+--> Designed for Infrequently accessed data (once a month) with milliseconds access
+
+	Availability Zones 		-	≥ 3 AZ		
+	Min Storage Duration		-	30 Days
+	Min billable object size		-	128 KB				
+	Monitoring & auto-tiering fees	-	NA	
+	Retrieval fees			-	Per-GB fees apply
+
+
+Intelligent-Tier:
+-----------------
+
+--> Designed for Data with changing or unknown access patterns
+
+	Availability Zones 		-	≥ 3 AZ		
+	Min Storage Duration		-	NA	
+	Min billable object size		-	NA			
+	Monitoring & auto-tiering fees	-	Per-object fees apply for objects >= 128 KB
+	Retrieval fees			-	NA
+
+	
+One Zone-IA:
+------------
+
+--> Recreatable, infrequently accessed data (once a month) with milliseconds access
+
+		
+	Availability Zones 		-	1 AZ	
+	Min Storage Duration		-	30 days	
+	Min billable object size		-	128 KB		
+	Monitoring & auto-tiering fees	-	NA
+	Retrieval fees			-	Per-GB fees apply
+
+	
+
+--> Glacier Storage classes are designed to archive the data for a longer periods
+
+--> Glacier offers 3 different types of storage clases
+
+	- Glacier Instant retrieval
+	- Glacier Flexible retrieval
+	- Glacier Deep Archive
+
+Glacier Instant Retrieval:
+--------------------------
+
+--> Designed for Long-lived archive data accessed once a quarter with instant retrieval in milliseconds
+
+	Availability Zones 		-	≥ 3 AZ	
+	Min Storage Duration		-	90 Days	
+	Min billable object size		-	128 KB				
+	Monitoring & auto-tiering fees	-	NA	
+	Retrieval fees			-	Per-GB fees apply
+
+
+Glacier Flexible Retrieval:
+---------------------------
+
+--> Designed for Long-lived archive data accessed once a year with retrieval of minutes to hours
+
+
+	Availability Zones 		-	≥ 3 AZ		
+	Min Storage Duration		-	90 days	
+	Min billable object size		-	NA				
+	Monitoring & auto-tiering fees	-	NA	
+	Retrieval fees			-	Per-GB fees apply
+
+--> if you want to access the data, you should wait for minutes to hours.
+
+--> First we need to send a retrieval request, then S3 makes the data available in minutes to hours.
+
+while sending retrieval request for Glacier instant retrieval storage, we have 3 types of retrievals available
+
+	1. Expedited	--	within 1-5 minute
+	2. Standard	--	within 3-5 hours
+	3. Bulk		-- 	within 5-12 hours
+
+
+
+Glacier Deep Archive:
+---------------------
+
+--> Designed for Long-lived archive data accessed less than once a year with retrieval of hours
+
+	Availability Zones 		-	≥ 3 AZ		
+	Min Storage Duration		-	180 days	
+	Min billable object size		-	NA				
+	Monitoring & auto-tiering fees	-	NA	
+	Retrieval fees			-	Per-GB fees apply
+
+--> We need to wait few hours to get the data accessible.
+
+while sending retrieval request for Glacier Deep Archive storage, we have 2 types of retrievals available
+
+	1. Standard	-	within 12 hours.
+	2. Bulk		-	within 48 hours.
+
+
+
+1. Create 7 different text files, and upload into S3 bucket using different storage classes.
+
+2. Verify the objects instant access based on their storage classes and observe that Galcier Flexible retrieval and Deep archive are not available for Instant access.. 
+
+3. Initiate restore of the object stored in Glacier Instant retrieval using "Expedited Retrieval Method" and observe that the object is available for access with in 5 mins.
+
+4. Initiate restore of the object stored in Glacier Deep Archive using "Standard Retrieval Method" and observe that the object is available for access with in 12 Hours.
+
+
+
+
+
+
+
+

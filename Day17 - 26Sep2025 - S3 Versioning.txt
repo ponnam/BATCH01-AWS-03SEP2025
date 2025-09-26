@@ -1,0 +1,82 @@
+Versioning:
+-----------
+
+--> S3 versioning is a feature of S3 that allows you to preserve, retrieve and restore every variant (version) of the Object stored in the S3 bucket.
+
+--> It's a powerful mechanism for protecting against accidental overwrite, deletions, or data loss.
+
+--> By default, Versioning is Not enabled on S3 buckets.
+
+--> We can enable versioning manually whenever we need.
+
+--> Once Versioning is enabled, It cannot be disabled, but it can be suspended
+
+--> If we delete any object from the versioned S3 bucket, Object will be marked with a "Delete Marker" instead of Permanent Deletion. So that we can recover the object by deleting the "Delete Marker"
+
+
+1. Delete any object from non-Versioned S3 bucket and observe the process.
+
+2. Delete The S3 bucket "myfirsts3bucket24sep2025", in which already 8 objects stored.
+
+Note: Buckets must be empty before they can be deleted.
+
+3. Create a S3 bucket "versioning26sep2025" in N.virginia region with all default options.
+
+4. Observe that the Versioning is not enabled on the S3 bucket and enable Versioning.
+
+5. Upload a text file "Sample.txt" into the S3 bucket
+
+		Hello Everyone
+
+6. Update the sample.txt file and upload to S3 bucket
+
+		Hi All
+
+7. Update the sample.txt file again and upload to S3 bucket
+
+	lsdhlksdklfjsldkjflkdjfkldj
+
+8. Delete the Object "Sample.txt"
+
+9. Delete the "Delete Marker" and recover the delete object.
+
+
+--> We realized the current version of the object is displaying the wrong information, and i want to make the previous version as the current version
+	
+	- Delete the latest version of the object, so that the previous version becomes latest 			version
+	- Download the required version and upload it to the S3 bucket
+
+10. Delete the Latest version of the object and observe that the previous version becomes latest/Current version.
+
+11. Empty the bucket and observe that all the objects & Versions got deleted permanently
+
+
+NOTE: There is no additional Charges for enabling the Versioning Feature. Charges are only for the storage space which the object's version consume.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

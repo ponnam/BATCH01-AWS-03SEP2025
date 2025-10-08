@@ -1,0 +1,46 @@
+S3 - Replication Rules:
+-----------------------
+
+--> Replication rules allows you to replicate the objects from one bucket to another
+
+--> The source and destination buckets can be in the same region or across different regions.
+
+--> Replication rules cannot replicate the already existing objects, and we need to use AWS Batch job which can execute once to replicate existing objects from source to destination buckets.
+
+--> AWS Batch job is not free and you will be charged for executing the job.
+
+NOTE: Versioning must be enabled on Source & Destination buckets
+
+1. Create a replication rule to replicate all the objects from source bucket to destination bucket, also use AWS Batch job to replicate existing objects.
+
+	a) Create S3 bucket "source08oct2025" in N.Virginia
+	b) Create S3 bucket "destination08oct2025" in Mumbai
+	c) Upload any 5 objects into source bucket
+	d) Create replication rule on Source bucket to replicate the data into destination bucket with Standard-IA Storage class.
+	e) Also create AWS Batch job to replicate the existing 5 objects.
+
+2. Upload an object into Source bucket and observe that the same got replicated to Destination bucket.
+
+3. Delete any object from the source bucket, and observe that the delete marker got replicated to the destination bucket.
+
+4. Permanently Delete any object from the source bucket and observe that the object is still available on Destination bucket.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

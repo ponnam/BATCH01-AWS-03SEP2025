@@ -1,0 +1,75 @@
+Static Website Hosting:
+-----------------------
+
+--> S3 offers static website hosting at no extra charges, and we can use this feature to host static webistes only.
+
+--> This feature doesn't support Dynamic website hosting (ex: PHP.. )
+
+--> html with css is the best example for static website.
+
+
+1. Host a static website using S3 bucket.
+	a) Download a static website template from the internet
+	b) Create a s3 bucket "staticwebhosting10oct2025"
+		- Enable ACL
+		- Disable "Block all Public Access" 
+	c) Upload the downloaded website pages as public into S3 bucket
+	d) Enable Static web site hosting and note down the website url.
+
+
+2. Verify the website is accessible or not.
+
+	http://staticwebhosting10oct2025.s3-website-us-east-1.amazonaws.com
+
+
+Note: In the real time we create alias record using route53 (DNS) Service, so that the website can be accessible like abc.com
+
+ex: 	abc.com	   --> 	http://staticwebhosting10oct2025.s3-website-us-east-1.amazonaws.com
+
+
+
+S3 Transfer Acceleration:
+-------------------------
+
+
+--> S3 Transfer acceleration allows to transfer the Data with high speeds.
+
+--> Whenever we transfer the data From/to S3 buckets which is far away from us, then due to the latency transfer speed will be compromised.
+
+--> If we enable S3 Transfer acceleration, then the data will be transferred to the nearest edge location and then will be uploaded to the S3 bucket using Amazon's High speed low latency network.
+
+--> There is no charges to enable the Transfer acceleration feature, however we will be charged for the amount of data transferred using the transfer acceleration feature.
+
+
+1. Enable Transfer acceleration on any S3 bucket
+
+2. Also Compare the speeds before and after Transfer acceleration.
+
+
+https://s3-accelerate-speedtest.s3-accelerate.amazonaws.com/en/accelerate-speed-comparsion.html?region=us-east-1&origBucketName=staticwebhosting10oct2025
+
+
+ref: https://docs.aws.amazon.com/AmazonS3/latest/userguide/transfer-acceleration.html?icmpid=docs_amazons3_console
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,130 @@
+Life Cycle Rules:
+-----------------
+
+--> Life Cycle rule allows us to transition the object from one storage class to another with in the same S3 bucket
+
+--> We can create a separate life cycle rules for Current version and Non-Current Version of the objects. 
+
+
+ex: 
+
+Current version Transition cycle:
+
+
+Standard -- 30 Days --> Standard-IA -- 60 Days --> OneZone-IA -- 90 Days --> Glacier Deep Archive -- 365 Days --> Expire (Delete)
+
+
+Non-Current Version Transition cycle:
+
+Standard --> 30 Days --> Glacier Deep Archive -- 365 Days --> Permanently Delete
+
+
+1. Create a Life Cycle rule on any S3 bucket as per the above requirement.
+
+
+
+
+Encryption:
+-----------
+
+--> Encryption is the process of Converting an object from Human readable format into Unreadable format.
+
+--> By Default, All S3 buckets are encrypted using SSE-S3 encryption mechanism
+
+--> In the encryption process, a unique algorithm with the help encryption keys will be used.
+
+--> Encryption key is used to Encrypt and decrypt the data
+
+--> On S3 bucket, AWS is responsible for Server Side Encryption.
+
+--> There are different types of Keys supported on AWS S3 for encryption
+
+	- SSE-S3
+	- SSE-KMS
+	- DSSE-KMS
+
+SSE-S3:
+-------
+--> AWS S3 create and manage the encryption key for all S3 buckets.
+
+--> We have no control over the Encryption key as it is managed by S3.
+
+--> The same Encryption key is used for All S3 buckets in that region
+
+
+SSE-KMS:
+--------
+
+--> In this Process, We can create our own Encryption key using KMS Service.
+
+--> KMS Stands for Key Management service, in which we can create as many keys as you want.
+
+--> We can maintain a separate encryption key for each bucket, also we can perform key rotation for every few days for security reasons.
+
+--> If we loose the encryption key, we can't decrypt the data.
+
+---> KMS Customer managed keys are chargeable per month.
+
+
+
+1. Observe that all S3 buckets are enabled with encryption using SSE-S3.
+
+2. Enable Encryption using SSE-KMS on any S3 bucket.
+	a) Create/ choose a S3 bucket
+	b) Create KMS Key for S3 bucket encryption
+	c) Enable encryption using the above KMS Key
+
+
+3. Disable the KMS key and confirm that we cannot access the Object without KMS key.
+
+4. Enable the KMS Key and observe that the objects are accessible again.
+
+
+NOTE: We cannot delete the KMS key instantly, Instead we can schedule the key deletion
+
+
+5. Schedule the KMS Key deletion for 7 Days.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,53 @@
+Bucket Policies:
+----------------
+
+--> S3 bucket policy is a JSON based access control document, that defines what actions are allowed or denied on a bucket for specific users, roles or accounts.
+
+--> It helps you manage permissions at the bucket level -- unlike ACLs which works at the object level
+
+
+1. Create a bucket policy to make the entire bucket as public bucket.
+	a) Create a default bucket "bucketpolicy10oct2025"
+	b) Upload any object and observe that the objects are private by default
+	c) Create a bucket policy to make the bucket as public bucket
+		- Disable "Block all Public Access" feature on the S3 bucket
+	d) Upload a new object and observe that existing and new objects are public by default.
+
+
+2. Create 2 users [ Krishna & Manoj ] and provide S3 Read only access
+
+3. Create S3 bucket "custompolicy10oct2025" and upload an object
+
+4. Login as both users and confirm the following
+	a) Both users can read the objects from the S3 bucket
+	b) Both users Cannot upload or delete Objects from S3 bucket
+
+5. Create a bucket policy to allow the user "Krishna" with full access on the S3 bucket.
+
+6. Login as krishna and verify that he can upload & Delete objects into S3 bucket
+
+7. Login as Manoj and verify that he cannot upload or delete objects from the S3 bucket
+
+
+--> To create the Bucket policy, we need to note down the ARN of the S3 bucket
+
+--> ARN -- Amazon resource name -- unique identifier of the AWS Resource
+
+
+arn:aws:s3:::custompolicy10oct2025
+
+--> To allow a specific user, we need the ARN of the IAM User whom you would like to allow
+
+arn:aws:iam::484907509718:user/krishna
+
+
+
+
+
+
+
+
+
+
+
+

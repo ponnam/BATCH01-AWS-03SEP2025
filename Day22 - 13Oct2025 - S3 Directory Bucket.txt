@@ -1,0 +1,33 @@
+S3 Directory Bucket:
+---------------------
+
+--> Directory buckets are optimized for use cases that require consistent single-digit millisecond latency.
+
+--> These buckets use only the S3 Express One Zone storage class, which provides faster processing of data within a single Availability Zone.
+
+--> Directory buckets store data across multiple devices within a single Availability Zone, but do not store data redundantly across Availability Zones.
+
+--> Directory bucket names must be 3 to 63 characters, including the suffix, and unique within the chosen Region and Availability Zone
+
+--> Directory bucket names must also begin and end with a letter or number. Valid characters are a-z, 0-9, and hyphens (-)
+
+
+1. Create  a Directory bucket in us-east-1f AZ
+
+2. Upload any object into the Directory S3 bucket.
+
+
+--> Always, Block public access is enabled and we cannot turn it off.
+
+--> You cannot make any objects in the directory bucket as a public objects.
+
+--> We need to use Bucket policy and IAM policies/roles to allow anyone to access the objects.
+
+
+
+
+
+
+
+
+

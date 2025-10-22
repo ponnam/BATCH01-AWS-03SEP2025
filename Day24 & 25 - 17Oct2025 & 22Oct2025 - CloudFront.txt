@@ -1,0 +1,141 @@
+CloudFront:
+-----------
+
+CloudFront is Amazon Web Services' (AWS) global content delivery network (CDN), which accelerates the delivery of web content to users by caching it at geographically distributed "edge locations".
+
+--> CloudFront is a global service, doesn't belong to any specific region.
+
+--> Cloudfront distribution caches the web content across the edge locations, so that the users can access the web content from the nearest edge location with lowest possible latency
+
+--> Latency is the time taken to send a request and to receive the response.
+
+--> Latency will be high if the user is located far away from the server.
+
+--> Wherever the content is hosted, that is known as Origin.
+
+--> CloudFront distribution caches the content across the edge locations from the origin.
+
+--> Cached content will be invalidated automatically after TTL ( Time to live)
+
+--> By default the TTL is 24 hours, which we can adjust as per the requirement.
+
+--> Every 24 hours cached content will be cleared from the edge locations and a fresh copy of the content will be cached from the origin.
+
+
+We can create 2 types of Cloud front distributions
+
+	- Without OAI
+	- WIth OAI
+
+--> OAI stands for Origin access Identity
+
+
+Without OAI:
+------------
+
+--> Objects must be Public
+
+--> In order to make the objects public
+	- Enable ACL on the S3 bucket
+	- Disable "Block all Public Access"
+
+
+
+1. Create a cloud front distribution with S3 bucket as origin without OAI and observe the latency
+	a) Create an S3 bucket "cloudfront22oct2025" in N.Virginia
+		- Enable ACL
+		- Disable "block all Public Access"
+	b) Uplaod any HD Image Image.jpg as a public object
+	c) Access the Image using the object url and observe the delay  (2.95 sec)
+	d) Create a cloudfront distribution and note the url
+	e) Access the same image using the CloudFront and observe the performance.
+
+
+
+CloudFront Distribution Domain Name : d20vetpzveh6zi.cloudfront.net
+
+
+
+NOTE: Still the objecs are accessible using the object url, as the objects are public. and the users cannot get the content with high speeds.
+
+
+
+Origin Access Identity:
+-----------------------
+
+--> with the origin Access Identity, we can keep the S3 origin as Private and we can allow the CloudFront distribution identity to read the data
+
+	- No Need to enable ACL on the Bucket
+	- No need to Upload the objects as Public Objects
+	- Need to create a bucket policy to allow Only cloudfront distribution to read the objects
+
+
+
+
+2. Create a CloudFront distribution using OAI
+	a) Create S3 bucket "cloudfront22oct2025oai"
+		- Disable ACL
+		- 
+	b) Create CloudFront Distribution using OAI
+	c) Upload any HD Image Image.jpg and observe the latency before and after the cloudfront
+
+
+--> All the objects cache at the edge locations are invalidated (Cleared) from the Edge locations automatically after a TTL
+
+--> TTL stands for time-to-live, default TTL is 24 hours. which can be modified as per the requirement.
+
+--> cached Data will be cleared from the edge locations every 24 hours
+
+--> If any object updated at the origin, the end users can see the old content until the TTL.
+
+ex: Assume every day at 10:00 AM all the cached data will be cleared because of TTL. if you update any content at 07:00 AM, the end users can see the outdated old content till 10:00 AM
+
+--> to overcome this issue, we have an option called Manual Invalidation
+
+--> Invalidation is the process of Invalidate the objects from the Edge Location's Cache
+
+--> Manual Invalidation is the process to invalidate the object at any time, so that the end users can be delivered with the updated content instantly.
+
+--> Manual invalidation is chargeable, based on the paths we enter during the invalidation.
+
+
+3. Upload a new Image with the same name "Image.jpg" and observe that the end users still getting the old image.
+
+4. Manually Invalidate the Image.jpg from the edge locations and observe that the end users are getting the new content
+
+
+
+CloudFront Distribution Cleanup:
+--------------------------------
+
+--> We must Disable the cloud front distribution (Might take upto 5 MIns)
+
+--> Then only we can delete the cloudfront distribution
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

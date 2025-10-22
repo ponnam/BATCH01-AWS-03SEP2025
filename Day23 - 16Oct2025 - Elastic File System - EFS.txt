@@ -1,0 +1,83 @@
+Elastic File System - EFS:
+--------------------------
+
+--> EFS is AWS Managed services, which offers Network Storage
+
+--> EFS works on NFS v4 protocol, and is only supports Linux OS
+
+--> EFS Automatically Grow and shrink based on the data to be stored.
+
+--> The size of the data stored on the EFS is chargeable.
+
+--> EFS supports unlimited storage space.
+
+--> EFS can be mounted to multiple EC2 instances at a time.
+
+
+1. Create an EFS file system in N.Virginia region.
+	a) Create a Security Group to allow NFS Traffic
+
+2. Mount the EFS to multiple Linux EC2 instances across 2 AZ
+
+
+
+Mounting Procedure:
+-------------------
+
+	- Create a folder /myEFS in Server1
+	- Mount the EFS to the folder /myEFS
+
+--> Whatever we store in the folder /myEFS is getting stored into the EFS (Network Drive)
+
+
+	# Create a folder /myEFS
+
+	sudo mkdir /myEFS
+
+	# Mount the EFS
+
+	sudo mount -t nfs4 -o nfsvers=4.1,rsize=1048576,wsize=1048576,hard,timeo=600,retrans=2,noresvport fs-0691fb75bc2b2d25f.efs.us-east-1.amazonaws.com:/ /myEFS
+
+--> repeat the same on Sevrer2 also
+
+NOTE: EFS is mounted to both Linux servers (Server1 & Server2)
+
+
+
+3. Login to Sevrer1 and create a file "server1.txt" in EFS storage ( By creating at /myEFS )
+
+4. Login to Server2 and access the file "server1.txt"
+
+5. From Server2, edit the file server1.txt and observe the changes from server1
+
+
+--> EFS can be used with Linux Instances only.
+
+--> FSx is the alternative for EFS to be used with Windows EC2 instances, works on SMB Protocol
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+

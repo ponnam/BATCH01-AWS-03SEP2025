@@ -1,0 +1,126 @@
+Elastic Load Balancer - ELB:
+----------------------------
+
+--> Elastic Load Balancing (ELB) automatically distributes incoming application traffic across multiple targets and virtual appliances in one or more Availability Zones (AZs).
+
+--> By using the Load balancer, we can distribute the traffic across multiple healthy targets.
+
+--> Target is the instance which is connected behind the load balancer.
+
+--> Also, Load balancer offers High availability.
+
+--> Whenever any target is unhealthy, automatically the incoming traffic will be distribute to the healthy server.
+
+--> to achieve the High availability minimum 2 targets are required.
+
+--> It is recommended to create/maintain the targets across multiple AZ
+
+--> Elastic Load balancer contains 2 components
+
+	- Target
+	- Target group
+
+--> Target is the Instance to which the traffic to be distributed
+
+	ex: EC2 instance, Load balancer, API Gateway, Lambda, etc...
+
+--> Target group is the group in which we register the targets, Load balancer is connected with the target group.
+
+--> Health check will be configured on the target group to determine the health of the targets. and the traffic will be distributed to the healthy targets only.
+
+--> whenever any target becomes UnHealthy, Target group automatically send all the traffic to other healthy targets.
+
+--> Whenever the unhealty target becomes healthy, then the target group starts sending the traffic to the healthy target.
+
+
+
+AWS offers different types of Load Balancers
+
+	1. Application Load Balancer
+	2. Network Load Balancer
+	3. Gateway Load Balancer
+	4. Classic Load Balancer -- Outdated/ Obsolete
+
+Application Load Balancer - ALB:
+--------------------------------
+
+--> ALB can be used to distribute the traffic of 80 & 443 ports only.
+
+--> If you want to use a load balancer for your website or a web application which is running on 80 (http) & 443 (https) ports
+
+--> ALB operates at Layer7
+
+
+Network Load Balancer - NLB:
+----------------------------
+
+--> NLB can be used to distribute the traffic of any TCP and UDP traffic
+
+--> It Operates at Layer4
+
+--> NLB is capable of handling millions of requests per second while maintaining ultra-low latencies
+
+
+Gateway Load Balancer:
+----------------------
+
+--> Is used to distribute the traffic across 3rd party virtual appliances
+
+--> Especially to distribute the traffic across virtual Networking appliances
+
+
+Classic Load Balancer:
+----------------------
+
+--> This is the very Old type of Load balancer and it is not recommended to use
+
+--> Earlier In AWS, all the ec2 instance were connected using a network called "EC2-Classic"
+
+--> To distribute the traffic across the targets connected on the EC2-Clasic network, we used Classic load balancer.
+
+--> It is Obsolete, not supported by AWS
+
+
+1. Host a Simple Website using Application Load balancer to provide High Availability
+	a) Launch 2 Linux EC2 instances (Server1 & Server2) in 1a & 1b AZ respectively
+	b) Host websites on both servers, use different webpages
+	c) Create the target group
+		- Register Server1 & Server2 as targtes
+		- Create a Health check
+			healthy Threshold --> 5
+			UnHealthy Threshold --> 2
+			Wait time --> 5 seconds
+			Interval --> 10 Seconds
+	d) Create Application Load balancer and connect with the above target group
+
+
+2. Note Down the ALB DNS Name and access the application.
+
+	MyFirstALB-1488897457.us-east-1.elb.amazonaws.com
+
+Note: There is no visible Public IP for the ALB, aws manages the public IP in the backend.
+
+3. Stop the Server1 and observe that all the users/traffic are redirected to Server2
+
+4. Start the Server1 again and observe the traffic is getting distributed across both healthy targets
+
+
+5. Cleanup the Load Balancer components
+	a) Delete the Application Load Balancer
+	b) Delete the Target Group
+	c) Delete both EC2 instance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

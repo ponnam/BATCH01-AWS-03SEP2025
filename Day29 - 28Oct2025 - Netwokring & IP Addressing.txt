@@ -1,0 +1,169 @@
+Network & Networking:
+---------------------
+
+--> if we connect 2 or more devices together, that is known as network.
+
+--> Networking is the process of maintain the communication between the devices in the network.
+
+--> In the network the connected devoces will have 2 address, with those 2 addresses they are identified for the communication.
+
+	- Physical Address
+	- Logical Address
+
+--> Physical address is the address which is assigned by the manufacturer, at the time of manufacturing the Network port ( LAN Port, ethernet port etc..)
+
+--> Logical address is the address which we assign to the devices for the communication, and the logical address is IP Address.
+
+--> There are 2 versions of IP addresses available.
+
+	- IP Version4  - IPV4
+	- IP Version6  - IPV6
+
+
+--> The IP Address must be unique
+
+IP Address V4:
+--------------
+
+--> IPv4 is a 32-bit Binary Number
+
+--> which is divided into 4 equal parts.
+
+--> Each part contains 8 bits and is known as Octet.
+
+--> Each octet is converted from Binary to decimal and separated by Dot (.), and hence it is also known as dotted notation.
+
+	ex: 192.168.1.1
+
+
+--> The range of the IP Address is from 0 to 255
+
+--> This range has been divided into 5 classes
+
+
+	Class A	:	0   - 127	(1 - 127)
+	Class B	:	128 - 191
+	Class C	:	192 - 223
+	Class D	:	224 - 239
+	Class E	:	240 - 255
+
+
+--> 0 and 127 cannot be used as IP Addresses
+
+--> 127 is known as loopback address
+
+--> We need to assign IP addresses along with subnet mask.
+
+--> Subnet mask is used to identify the network of the device.
+
+--> For every class there is a default subnet mask.
+
+--> Class A will have 1 network Octet and 3 Host octets
+
+--> Class B will have 2 network Octets and 2 Host octets
+
+--> Class C will have 3 network Octets and 1 Host octet
+
+
+
+
+Class A Subnet Mask	--> 255.0.0.0
+Class B Subnet Mask	--> 255.255.0.0
+Class C Subnet Mask	--> 255.255.255.0
+
+
+--> This is Known as Classful IP Addressing, in which we get default subnet mask for every Class.
+
+NOTE: ClassD and ClassE cannot be used as IP Addresses
+
+--> In Classfull IP Addressing, there are wastage of IP Addresses.
+
+--> If you are having max of 200 Devices and if you use classB network. You will get 2^16 IP addresses in the network (65536 IP Addresses)
+
+--> To avoid the wastage of IP Addresses, Clasless IP addressing is introduced.
+
+--> We can customize the subnet mask according to the requirement and we can stop the wastage pf IP Addresses.
+
+
+--> For a classB network we can choose /24 (24 network bit)
+
+	ex: 172.16.1.0/24  --> Valid network (Classless)
+	    10.1.2.0/24  --> Valid classless network
+	    10.11.0.0/16 --> Valid Classles network
+
+--> This is also known as CIDR -- Clasless Inter Domain Routing
+
+--> IANA is the organization responsible for Public IP uniqueness.
+
+--> ALL IP addresses are categorized into 
+
+	- Public IP
+	- Private IP
+
+--> Public IPs can be accessed from anywhere
+
+--> Private IPs are meant for internal communication (With in the same network)
+
+--> Private IPs are free, anyone can use to build their local networks (Office, home etc..)
+
+Private IP Ranges:
+------------------
+
+	10.X.X.X
+	172.16.X.X	--->	172.31.X.X
+	192.168.X.X
+
+
+--> The above listed ranges are Private IPs and free of charge, they are intended for Local networks only.
+
+--> all other IPs are Public IP Addresses, and we need to purchase from ISP or IANA.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,173 @@
+Auto Scaling:
+-------------
+
+
+--> Auto Scaling is the process of adjusting the capacity according to the demand.
+
+--> We can increase or reduce the resources with the help of autoscaling.
+
+--> Whenever there is an increase in the load, new instances will be created.
+
+--> whenever there is no load, existing instances will be deleted.
+
+--> To avoid all the instances from deletion, we can set a minimum capacity, min no of instance will run always irrespective of the demand.
+
+--> We can set the maximum capacity also, so that autoscaling will not go beyond the maximum no of instances.
+
+
+Autoscaling Contains 2 components
+
+	1. Auto Scaling Group
+	2. Launch Template
+
+Auto Scaling Group:
+-------------------
+
+--> In the auto scaling group we can configure when to create a new instance or when to delete an existing instance
+
+--> This configuration can be done with the help of Scaling Policies.
+
+--> Autoscaling supports different types of scaling policies
+
+	- Target tracking scaling policy
+	- Scheduled scaling Policy
+	- Manual Scaling Policy
+	- Predictive scaling Policy
+--> The process of creating a new instance is known Scale up or Scale Out
+
+--> The Process of deleting the existing instance is known as Scale Down or Scale In
+
+
+--> In this Autoscaling Process
+
+	Min Capacity	--> Min no of Instances to be running all the time, even there is no load
+	Max Capacity	--> max no of Instances that can be running at peak load
+	Actual Capacity	--> The no of Instances that are running right now
+	Desired Capacity--> Required no of instances based on the load
+
+
+--> Initially We set the min, max and actual capacity at the time of creating autoscaling.
+
+--> whenever the load increases, autoscaling will change the desired capacity to +1
+
+--> Then there is a difference between the actual capacity and the desired capacity, autoscaling will match the actual capacity with the desired capacity by creating or deleting the instance.
+
+Example:
+
+We created auto scaling with the following configuration
+
+	Threshold is CPU >70%
+	Min capacity	= 2
+	Max Capcity	= 2
+	Actual Capacity	= 2
+	Desired Capacoty= wil becomes 2 at th initial stage
+
+
+Whenever the CPU exceed the 70% of utilization, then autoscaling increases the desired capacity to 2+1 = 3
+
+Now Actual capacity is 2 and the desired capacity is 3, there is a difference between the actual capacity and desired capacity
+
+Autoscaling job is to match the Actual capacity with the desired capacity.
+
+It will create a new instance in the autoscaling group to match the actual with desired capacity
+
+
+--> Always we use Load balancer along with the Autoscaling, to distribute the traffic across all the newly created instances.
+
+--> Autoscaling will register the newly created instances to the same target group.
+
+
+Launch Template:
+----------------
+
+--> Contains the information about How to create the Instances
+
+--> Earlier we used to have launch configuration and the launch template is newer version and you cannot see the launch configuration option in the AWS Console.
+
+
+1. Setup Autoscaling for your Web Application
+	a) Create a Linux EC2 Instance and host a simple Website
+	b) Create an AMI from the above instance once it is ready, and then terminate the instance
+	c) Create a target Group with No Targets.
+	d) Create an Application Load Balancer and connect with the above Target Group
+	e) Create a Launch Template from the above EC2 instance
+	f) Create autoscaling group using the above launch template
+		- Min Capacity	= 2
+		- Max Capacity	= 5
+		- Actual Capacity = 2
+		- Desired Capacity= 2
+		- Threshold at CPU >70%
+		- Target Tracking Policy
+
+Note: Change the deregistration delay to 60 sec from 300 sec to save time during practice
+
+ALB DNS: MyALB-Autoscaling-1679458856.us-east-1.elb.amazonaws.com
+
+
+
+Launch Template Contains:
+
+	- AMI
+	- Instance Type
+	- KeyPair
+	- Security group
+	- Storage (EBS Volume)
+	
+
+
+Auto Scaling Group contains:
+
+	- Launch Template
+	- Network
+	- Subnets & Availability Zones
+	- Target Group
+	- Group Size
+		- Desired Capacity
+		- Min Capacity
+		- Maximum Capacity
+		- Scaling Policy
+		- Instance Maintenance Policy
+		- Notifications
+		- Tags
+		- 
+
+
+Use the below on both servers to increase the CPU Utilization
+
+
+--> Install stress tool on both machines
+
+	yum install stress
+
+	stress --cpu 4
+
+
+
+
+CleanUP
+
+
+1. Delete the Autoscaling Group
+
+2. Delete launch Template
+
+3. Delete AMI
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+r

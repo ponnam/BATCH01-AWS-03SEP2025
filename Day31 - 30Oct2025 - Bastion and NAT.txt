@@ -1,0 +1,88 @@
+Bastion Host:
+-------------
+
+--> Bastion host is a Special-Purpose EC2 instance, which acts as a gateway between the Private subnet and the internet.
+
+--> Bastion Host has to be in the public Subnet only
+
+--> Bastion host is also known as Jump Server.
+
+
+1. Create a Bastion host in the Public Subnet.
+
+2. Login to Server11 using Bastion Host.
+
+
+Server11:
+---------
+
+	Public IP	: NA
+	Private IP	: 192.168.2.233
+	UserName	: Administrator
+	Password	: nmZwFSoughN;Ww5I5iYtT1Av=vr-Cv&P
+
+
+Bastion Host:
+-------------
+
+	Public IP	: 98.81.149.68
+	Private IP	: 192.168.1.191	
+	UserName	: Administrator
+	Password	: 2ya=)Yb?Y5bvSPDO0vH.lh0;XXte$tih
+
+
+NOTE: By Default, Private subnet instances, cannot browse the interent.
+
+
+
+Network Address Translation - NAT:
+----------------------------------
+
+--> NAT is a service, which can share the internet with Private subnets.
+
+--> On AWS We have an AWS managed NAT Service, which is NAT Gateway.
+
+--> Always, NAT must be in the public Subnet.
+
+--> NAT acts as a gateway between the private subnet instances and the internet, which allows a subnet to browse the internet.
+
+--> NAT Gateway is chargeable on an hourly basis.
+
+--> NAT Gateway must have an elastic IP Address.
+
+--> NAT Gateway is Highly Available and Highly Scalable.
+
+
+3. Create a NAT Gateway and observe the interent browsing in the public subnet.
+
+	a) Create a NAT Gateway, requires an Elastic IP (EIP)
+	b) Create an Additional Route in the private route table through NAT GAteway as below
+
+
+	Destination			target
+	-----------			------
+
+	192.168.0.0/16			local		--> Default route
+	
+	0.0.0.0/0			NAT Gateway	--> Additional Route
+
+	c) login to Server11 (Private subnet instance), and browse internet
+
+
+
+4. Clean UP the NAT Gateway.
+	a) Delete the NAT Gateway
+	b) Release the Elastic IP which was associated with NAT Gateway
+	c) Cleanup the route related to NAT Gateway.
+
+
+
+
+
+
+
+
+
+
+
+

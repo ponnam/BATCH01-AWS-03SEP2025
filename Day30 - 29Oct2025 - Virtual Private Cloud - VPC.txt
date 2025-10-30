@@ -1,0 +1,170 @@
+Virtual Private Cloud - VPC:
+----------------------------
+
+--> VPC is a virtual network in the cloud
+
+--> By Default, AWS provides a default VPC in each region.
+
+--> VPC is a network, in which we can create subnets
+
+--> Subnet is a small part of the given network.
+
+--> In Default VPC, we get the subnets equal to the no of AZ in that region.
+
+ex: in N.Virginia, we get 6 subnets in default VPC, in Hyderabad, we get 3 subnets in default VPC
+
+--> Each subnet spread across 1 AZ.
+
+--> We can create 2 types of subnets
+	- Public Subnet
+	- Private Subnet
+
+
+
+VPC Components:
+----------------
+
+	- Network
+	- Internet Gateway - IGW
+	- Subnet
+		- Public Subnet
+		- Private Subnet
+	- Route Tables
+		- Route
+	- Network Address Translation
+		- NAT Gateway
+	- Network ACL - NACL
+	- VPC Peering
+
+
+
+--> VPC is the virtual network in the cloud.
+
+
+Internet Gateway - IGW:
+-----------------------
+
+--> IGW is the gateway which connects the VPC with the internet
+
+--> IGW is responsible to provide connectivity with the internet
+
+--> Each VPC can have only 1 IGW, You cannot attach multiple IGWs to a single VPC
+
+
+Subnet:
+-------
+
+--> subnet is the small part of the network
+
+--> we can create multiple subnets in the VPC as per our requirement
+
+Public Subnet:
+--------------
+
+--> Public subnet is the subnet in which all the instances can get a public IP address, so that the public subnet instances can be accessible from anywhere across the globe.
+
+Ex: Webservers --> the instances which should be publicly accessible
+
+
+Private Subnet:
+---------------
+
+--> is the subnet in which the instances can get only Private IP Address
+
+--> Those private subnet instances cannot be accessible from out side of the VPC.
+
+	ex: Databases... 
+
+Route Table:
+------------
+
+--> Route Table is responsible for the communication
+
+--> It contains routes.
+
+--> Whenever we create a route table, it contains a default route. which allows communication  between all subnets with in the VPC Network
+
+	Destination			Target
+	-----------			------
+
+	192.168.0.0/16			local		--> Default route
+
+--> With the default route only, the route table acts as a Private route table.
+
+--> To make the route table as a public Route table, we need to create an additional route through internet gateway as below.
+
+	Destination			Target
+	-----------			------
+
+	192.168.0.0/16			local		--> Default route
+
+	0.0.0.0/0			IGW		--> Additional Route
+
+--> With the additional route, the route table becomes Public route table and associated subnets becomes public subnets.
+
+
+NOTE: With the creation of a new VPC, a default route table will be create and is known as "main" route table. and the main route table is Private route table.
+
+
+1. Create a VPC "MyFirstVPC" in N.Virginia region, with the below requirements
+
+	a) Create a VPC and name it as "MyFirstVPC" and assign the CIDR Range "192.168.0.0/16"
+	b) Create an Internet gateway and attach it to the VPC
+	c) Create a subnet and name it as "Public Subnet" with a CIDR range "192.168.1.0/24"
+	d) Create a Route Table and name it as "PublicRT" and observe the default route
+	e) Create an additional route in "PublicRT" as below to make it as public
+
+	Destination			Target
+	-----------			------
+
+	192.168.0.0/16			local		--> Default route
+	0.0.0.0/0			IGW		--> Additional Route
+	
+	f) Associate the PublicRT route table with the subnet "Public Subnet"
+	g) Create a subnet and name it as "Private Subnet" with a CIDR Range "192.168.2.0/24"
+
+2. Create 2 Windows EC2 instances in each subnet of MyFirstVPC.
+
+3. Login to Public Subnet and Private Subnet EC2 instances.
+
+
+
+
+
+
+NOTE: By default, newly created subnet is associated with "Main" Route table. which acts as Private route table.
+
+We can keep the Private subnet associated with the Main route table,
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

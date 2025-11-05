@@ -1,0 +1,109 @@
+VPC Peering:
+------------
+
+--> Peering connection is used to establish the communication between 2 different VPCs using Private network.
+
+--> Peering is non-Transitive.
+
+--> If there is a Peering connection between VPC1-VPC2 & VPC2-VPC3, then there is no automatic communication between VPC1-VPC3.
+
+--> As the peering is non-transitive, we must create the peering between VPC1 & VPC3 Manually.
+
+--> both the VPCs must not have overlapping CIDR Ranges
+
+--> Peering can be configured across 2 VPCs which are
+		- VPC1 & VPC2 are in the Same Region and Same AWS Account
+		- VPC1 & VPC2 are in 2 different Regions and in Same AWS Account
+		- VPC1 & VPC2 are in the Same region and across 2 different AWS Accounts
+		- VPC1 & VPC2 are in 2 different regions and in 2 different AWS Accounts
+
+
+VPC1: MyFirstVPC
+-----------------
+
+Region		: N.Virginia
+CIDR		: 192.168.0.0/16
+
+
+1. Lets Create another VPC in Mumbai region "MySecondVPC" using VPC&More option
+
+	CIDR		:	10.0.0.0/16
+	Public Subnet	:	10.0.1.0/24
+	Private Subnet	:	10.0.2.0/24
+	Region		: 	Mumbai
+
+
+
+2. Create an EC2 instance in the Private subnet of the MySecondVPC.
+
+3. Login to Server1 ( MyFirstVPC - Public Subnet ) and from Server1 login to Server12 using the Private IP Address of the Server12
+
+Server1:
+---------
+
+Public IP	:	13.221.134.2
+Private Ip	:	192.168.1.251
+UserName	:	Administrator
+Password	:	;%7B8KmF!@HgLRNOVu&VnV9R7dqCXK-h
+
+
+Server12:
+---------
+
+Public IP	:	NA
+Private Ip	:	10.0.2.223
+UserName	:	Administrator
+Password	:	uy)vkg*I22=v0fV9@?;0BWaUqVb1FvO9
+
+
+--> We cannot access Server12 from Server1 using the private IP, as there is no default communication between 2 VPCs.
+
+
+4. Create Peering connection between MyFirstVPC & MySecondVPC.
+	a) Note Down the VPC ID of the MySecondVPC (Acceptor)
+	b) Initiate the Peering Connection request from N.Virginina VPC (Requester)
+	c) Create additional routes in all the route tables of both VPCs to reach the vpcs through the Peering connection
+
+
+MyFirstVPC:
+-----------
+
+	Destination				Target	
+	-----------				-------
+
+	10.0.0.0/16				Peering Connection
+
+
+MySecondVPC:
+-------------
+
+	Destination				Target	
+	-----------				-------
+
+	192.168.0.0/16				Peering Connection
+
+
+
+vpc-0ad9321171a982678
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

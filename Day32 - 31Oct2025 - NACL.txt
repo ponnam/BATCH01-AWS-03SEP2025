@@ -1,0 +1,145 @@
+Network ACL - NACL
+------------------
+
+--> NACL stands for Network Access Control List
+
+--> NACL is a Network level Firewall, which operates at subnet level
+
+--> NACL is a Stateless Firewall.
+
+--> We need to create an explicit outbound rule to allow the response of the inbound request
+
+--> Outgoing response of the incoming request uses ephemeral ports, and need to allow the ephemeral port on the NACL outbound rules.
+
+--> NACL supports both ALLOW or DENY rules.
+
+--> Every rule has a rule number, rules with lowest number has highest priority
+
+--> The moment a rule is found for the incoming traffic, rest of the rules will be ignored.
+
+
+
+1. Observe How NACL rules looks like.
+
+Inbound Rules:
+--------------
+
+Rule#	Type		Protocol		PortRange	Source		Allow/Deny
+-----	----		--------		----------	------		----------
+
+100	All Traffic	  All			  All		0.0.0.0/0	Allow
+
+*	All Traffic	  All			  All		0.0.0.0/0	Deny
+
+
+Outbound Rules:
+---------------
+
+Rule#	Type		Protocol		PortRange	Destination	Allow/Deny
+-----	----		--------		----------	-----------	----------
+
+100	All Traffic	  All			  All		0.0.0.0/0	Allow
+
+*	All Traffic	  All			  All		0.0.0.0/0	Deny
+
+
+2. Create a Linux EC2 instance and Host a basic website, which runs on 80 port.
+
+
+3. Create a new NACL, MyFirstVPC-NACl and associate public subnet with the new NACL
+
+NOTE: By default, all inbound and outbound traffic will be denied by the newly created NACl
+
+
+4. Create an inbound rule in the NACl, to allow http traffic from anywhere
+
+Inbound Rules:
+--------------
+
+Rule#	Type		Protocol		PortRange	Source		Allow/Deny
+-----	----		--------		----------	------		----------
+
+100	Custom TCP	  TCP			  80		0.0.0.0/0	Allow		
+
+*	All Traffic	  All			  All		0.0.0.0/0	Deny
+
+
+--> Still we cannot access the website, as there is no explicit rule to allow th outbound response sent by the webserver.
+
+
+5. Create an outbound rule to allow all traffic to all destinations.
+
+Outbound Rules:
+---------------
+
+Rule#	Type		Protocol		PortRange	Destination	Allow/Deny
+-----	----		--------		----------	-----------	----------
+
+100	All Traffic	  All			  All		0.0.0.0/0	Allow
+
+*	All Traffic	  All			  All		0.0.0.0/0	Deny
+
+
+
+6. What happens if the inbound rules looks like below
+
+Inbound Rules:
+--------------
+
+Rule#	Type		Protocol		PortRange	Source		Allow/Deny
+-----	----		--------		----------	------		----------
+
+100	Custom TCP	  TCP			  80		0.0.0.0/0		Allow
+
+120	Custom TCP	  TCP			  80		106.222.234.230/32	Deny	
+
+*	All Traffic	  All			  All		0.0.0.0/0		Deny
+
+
+
+--> Website is accessible from anywhere across the globe.
+
+
+7. What happens if the inbound rules looks like below
+
+Inbound Rules:
+--------------
+
+Rule#	Type		Protocol		PortRange	Source		Allow/Deny
+-----	----		--------		----------	------		----------
+
+100	Custom TCP	  TCP			  80		0.0.0.0/0		Allow
+
+50	Custom TCP	  TCP			  80		106.222.234.230/32	Deny	
+
+*	All Traffic	  All			  All		0.0.0.0/0		Deny
+
+
+--> Website is not accessible from the location "106.222.234.230", and website is accessible from all other locations.
+
+
+
+8. Revert all NACL Changes, by Associating the public Subnet with the Default NACL.
+
+
+NOTE: Default NACL, Allows all inbound and outbound traffic by default.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,105 @@
+Virtual Private Network - VPN:
+------------------------------
+
+--> VPN allows the communication between your network and the Remote Private network.
+
+--> We can access the instances with their public IP address from anywhere with the help of VPN
+
+--> Types of VPN
+	
+	- Site to Site VPN
+	- IP-Sec VPN
+
+
+--> Site to Site VPN is used to establish the secure communication between 2 different networks.
+
+	ex: Between Branch office and Head office networks or between Your office and AWS VPC 			network
+
+--> IPsec VPN is a type of VPN which allows individual users to access the private network from anywhere across the globe.
+
+IPsec VPN:
+----------
+
+--> We need to setup a VPN server in AWS VPC Public Subnet.
+
+--> Need to create VPN account for every employee who require access to the Private subnet instances.
+
+--> The user needs to download the VPN CLient software to their machines and then they can connect to VPN service.
+
+--> This establishes a secure connection between the user's machine and the VPC network.
+
+--> Now the user can access any instance in that network using private IP address.
+
+
+--> OpenVPN is one of the most popular VPN Service providers.
+
+--> They offers free for 2 users
+
+
+
+1. Setup a VPN Server in the MyFirstVPC and allow users to access the private subnet instances 
+
+	- Create a Linux EC2 instance by choosing OpenVPN AMI from the market place
+	- Allocate an Elastic IP address and associate with the OpenVPN EC2 instance.
+	- Login to the Linux Instance and configure/setup the OpenVPN Server
+	- Login to OpenVPN using Admin UI and create multiple user accounts for employees
+
+
+Initial Configuration Complete!
+
+You can now continue configuring OpenVPN Access Server by
+directing your Web browser to this URL:
+
+https://44.193.102.67:943/admin
+
+During normal operation, OpenVPN AS can be accessed via these URLs:
+Admin  UI: https://44.193.102.67:943/admin
+Client UI: https://44.193.102.67:943/
+To login please use the "openvpn" account with  the password you specified during the setup.
+
+See the Release Notes for this release at:
+   https://openvpn.net/vpn-server-resources/release-notes/
+
+
+
+
+2. Share the VPN Details with the user and guide him to setup and access the private subnet instances
+
+url: https://44.193.102.67:943/
+UserName : phani
+Password : xxxxxxx
+
+3. Login to the Private instance using VPN
+	- Connect to VPN using VPN Client
+	- Login to Instance using Private IP
+
+
+	Private IP	:	192.168.2.183
+	UserName	:	Administrator
+	Password	:	V-XGR?n19ey(Y?wEwCoZoJn;?5J7X9Wx
+
+
+4. CleanUP the VPN Related stuff.
+	- Dis-asociate the Elasti IP and Release
+	- Delete the VPN Server
+	- Delete the Private Subnet Instance.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

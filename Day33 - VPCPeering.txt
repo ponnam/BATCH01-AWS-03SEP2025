@@ -84,7 +84,12 @@ MySecondVPC:
 
 
 
-vpc-0ad9321171a982678
+5. Clean Up the MySecondVPC
+	- Delete VPC Peering
+	- Delete NATGateway
+	- Release Elastic IP if exist.
+	- Delete VPC
+
 
 
 

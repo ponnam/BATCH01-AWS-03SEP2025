@@ -1,0 +1,117 @@
+VPC Flow Logs:
+--------------
+
+--> VPC FlowLogs is an AWS VPC Feature that captures information about the traffic going to and from network interfaces in your VPC.
+
+--> Network Interface is the network port/card which can be used to connect the instance in the network
+
+--> Flow Logs can capture, who talked to whom, when, and what ports/protocols were used
+
+--> These flow logs can be stored using multiple options
+
+	- Amazon S3
+	- Amazon CloudWatch Logs
+	- Amazon Kinesis Data Firehose
+
+
+UseCases:
+---------
+
+--> troubleshoot the connectivity (Why traffic got failed)
+
+--> Analyze the traffic patterns
+
+
+
+1. Enable VPC Flow Logs on "MyFirstVPC" and store the logs on S3 bucket
+
+	- Create a S3 bucket "myflowlogs07nov2025" in N.Virginia region
+	- ENable flow logs on MyFirstVPC and choose the bucket as destination for logs.
+
+
+2. Create a Linux EC2 instance in MyFirstVPC and host a simple website, access the website multiple time and observe the Logs in the S3 folder.
+
+
+VPN Service from AWS:
+---------------------
+
+--> Instead of 3rd party VPN services, we can use the VPN offered by AWS.
+
+--> Aws VPN is having multiple components/connection types.
+
+	1. Customer Gateway		-- Represents your on-premise router
+	2. Virtual Private Gateway	-- AWS side of the VPN Connection
+	3. Site to Site VPN Connection	-- Secure tunnel between CGW & VGW
+	4. Client VPN Endpoint		-- Secure connection for individual users
+
+
+
+AWS Direct Connect:
+-------------------
+
+--> AWS direct connect is a dedicated, High Bandwidth, low-latency private connection between your on-premises network and AWS.
+
+--> You will get your own private fiber cable connects on-premise network into AWS
+
+--> Recommended for Hybrid Clouds
+
+
+AWS Transit Gateway:
+--------------------
+
+Transit Gateway is a central network hub that connect
+
+	- Multiple VPCs
+	- VPN Connections
+	- Direct Connect Gateways
+
+
+Gateway Endpoint for S3:
+------------------------
+
+
+--> In general, whenever you upload or download ay objects from the VPC to AWS S3 bucket, all the data will reach S3 bucket through the public Internet.
+
+
+--> By Creating S3 gateway endpoint, we can establish a direct connection between the vPC and S3 bucket without using Public Internet or NAT.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

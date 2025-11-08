@@ -1,0 +1,185 @@
+Route53:
+--------
+
+--> is AWS managed Highly scalable, Highly available DNS & Domain Registration Service
+
+Domain Registrar:
+-----------------
+
+--> Is to allow the users to register the domain names for a specific period of time.
+
+--> All the domain names must be unique, hence we can register only the available domain names.
+
+--> ICAN is responsible for Domain name uniqueness
+
+--> Under ICAN all these Domain registrars exist.
+
+--> Route53 is a Domain Registrar managed by AWS
+
+
+ex: Airtel, Jio under TRAI for telecommunication
+
+
+List of Domain registrars:
+
+	- GoDaddy
+	- NameCheap
+	- Bigrock
+	- Etc....
+
+
+Note: Route53 is a Global Service
+
+
+1. How to register a domain name in Route53.
+
+
+--> Also Route53 support Domain Transfer facility.
+
+--> If you already registered any domain name with other registars, you can transfer the domain name from that registrar to Route53.
+
+
+Domain Naming System - DNS:
+---------------------------
+
+--> DNS is used to resolve the IP address from Domain name or vice-versa
+
+--> If you enter the domain name, DNS will give you the IP address information about the domain name.
+
+--> For every domain name we register, we must create a hosted zone in DNS.
+
+--> Hosted zone is a directory which contains the information about the domain name in the form of records.
+
+--> in DNS, there are different types of records available, and each record is meant for different use cases.
+
+--> Route53 also has DNS feature.
+
+
+Popular Types of Records:
+-------------------------
+
+	- Host
+	    - A
+	    - AAAA
+	- CNAME
+	- ALIAS
+	- SRV
+	- MX
+	- SPF
+
+
+--> Host record is used to point the domain name to an IP Address. it has 2 types again
+
+--> A record is used for IPv4 Address
+
+	ex: abc.com	A	11.12.13.14
+
+--> AAAA record is used for IPv6 Address
+
+	ex: abc.com 	AAAA	2001:db8:3333:4444:5555:6666:7777:8888
+
+--> CNAME record is used to send the traffic coming to your domain to another domain name
+
+	ex: abc.com	CNAME	yahoo.com
+
+
+--> ALIAS record is used to point the domain traffic to AWS resources
+
+	ex: abc.com	ALIAS	alb-dnsname/cloudfrontdns name
+
+--> Hosted zones are chargeable in Route53, 0.5 USD per HostedZone Per month
+
+
+
+NOTE: We can register the domain name outside of the Route53 and we can use route53 as DNS for that domain name.
+
+
+
+Assume that we registered a domain name called abc.com
+
+
+--> Route53 provides 2 types of Hosted Zones
+
+	- Private Hosted Zone
+	- Public Hosted Zone
+
+--> Private Hosted Zones are accessible from the selected VPCs only
+
+--> Public Hosted Zones are accessible from anywhere across the globe.
+
+
+1. Create a public Hosted Zone for abc.com
+
+
+--> Bydefault, NS & SOA records will be created along with the hosted zone creation.
+
+--> SOA -- Start of Authority, which is responsible to start the hosted zone along with the DNS service
+
+--> NS -- Name Server, this contains the information about the actual DNS servers, in which the information is getting stored.
+
+
+
+--> Whenever we register a domain name with registrar1 and using the DNS from route53, then we need to grab the NS values from Route53 and update the NS record at Registrar1. So that whatever the request received by the registrar, will be forwarded to the route53 DNS server.
+
+
+2. Create A record so that the users can access asdfg.com and connect to 11.12.13.14
+
+
+--> Always we use Simple ROutin policy while creating the record in the real time.
+
+
+--> For certification point of view, you must know about 
+
+	- Weighted Routing Policy
+	- FailOver Routing Policy
+
+
+Weighted Routing Policy:
+------------------------
+
+
+--> The traffic will be distributed across multiple Values (IP Addresses / DNS Names) based on the weightage of the records.
+
+--> We need to create Multiple A records for Weighted routing policy, and each record can have a weightage.
+
+
+
+Failover Routing Policy:
+------------------------
+
+--> For this routing policy we need to create 2 records
+
+	- Primary Record
+	- Secondary record
+
+--> Always the traffic will be forwarded to the Primary record value, and whenever the primary record is unhealthy then the traffic will be redirected to the secondary record value.
+
+
+
+
+
+
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

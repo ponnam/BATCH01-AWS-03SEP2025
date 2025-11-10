@@ -1,0 +1,138 @@
+Relational Database Service - RDS:
+----------------------------------
+
+--> RDS is AWS managed SQL database service, by using which we can create our database. and AWS will take care of everything to run your database (hardware, Operating system, Database software installation, maintenance)
+
+--> We are only responsible to maintain/manage the data which we store in the database.
+
+RDS supports the following SQL Database engines
+
+	- MySQL
+	- PostgreSQL
+	- MariaDB
+	- Microsoft SQL Server
+	- Oracle
+	- Aurora
+	- IBM Db2
+
+
+1. Create a database instance with MySQL Database engine as per the below configuration
+
+	Database Instance Name	:	MyFirstDBInstance
+	Database Name		:	mydevdb
+	Instance Type		:	t2.micro
+	UserName		:	krishna
+	Password		:	xxxxxxxx
+	Security group		:	Allow MySQL Traffic
+	Allow Public Access	:	Yes
+	Deployment Type		:	Single AZ
+	Storage			:	20 GB GP3 type
+
+
+--> RDS supports 3 different deployment options
+
+	- Single-AZ Deployment
+	- Multi-AZ DB Instance
+	- Multi-AZ DB Cluster
+
+
+
+--> Single-AZ : Creates a single DB instance in a Single AZ without any standby instances, which offers 99.5% Uptime and No data redundancy
+
+
+--> Multi-AZ DB Instance: Creates a primary DB instance in one AZ  and a non-readable standby instance in a separate Availability Zone. which offers 99.95% uptime, Redundancy across Availability Zones.
+
+--> Multi-AZ DB Cluster: Creates a primary DB instance in one AZ, with two readable standbys in separate Availability Zones. Along with the primary Databasee instance, the other 2 standby instances can offer read service. so that we can reduce the load on the primary (Writer) Instance. Which offers 99.95% of uptime.
+
+
+Credential Management:
+----------------------
+
+We can manage the credentials of RDS in 2 different ways
+
+	self managed --> we can assign our own password for the RDS database instance
+	AWS Secrets Manager --> RDS generates a random password and will be stored in AWS Secrets manager service. 
+
+
+--> RDS also supports storage autoscaling feature, Provides dynamic scaling support for your database’s storage based on your application’s needs.
+
+
+--> Connect to an EC2 compute resource is an option which can establish the communication between the RDS instance and the EC2 instance by creating necessary security group rules.
+
+
+Backups:
+--------
+
+--> We can enable automated backups for the RDS instance at the time creating the RDS instance, so that an automated backup will be created at a scheduled interval of time.
+
+--> we must select a retention period for the automated backups.
+
+--> retention Period is The number of days (1-35) for which automatic backups are kept.
+
+--> once the backups age is more than the retention period, then the backup will be automatically deleted.
+
+--> Also we can enable Backup replication, we can replicate the Database backup to another region for disaster recover purpose.
+
+
+NOTE: it is highly recommended to Uncheck "Enable auto minor version upgrade" -- Disable
+
+
+
+2. Create another database instance same as above, but use AWS Secrets manager for Credential management.
+
+
+
+
+--> Once the Database instance got created, it will trigger the initial backup of the database instance.
+
+--> Even though it doesn't have any data, it includes the Database instance configuration details.
+
+--> from the Initial Backup, every day as per the schedule an automated backup will be created.
+
+3. Login to the MyFirstDBinstance and create some sample data into the database.
+
+	a) We need MySQL Client software (mySQLYog Community Edition)
+	b) login to the DB and create some sample data
+
+	Endpoint of the DB Instance: myfirstdbinstance.cwh62iga4ynx.us-east-1.rds.amazonaws.com
+	UserName	: krishna
+	Password	: 
+
+
+--> 4 Records of Data is available on the mydevdb at 07:32 PM on 11-Nov-2025
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

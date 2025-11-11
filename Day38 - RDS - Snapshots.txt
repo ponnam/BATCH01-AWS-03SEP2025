@@ -1,0 +1,135 @@
+Snapshots:
+----------
+
+--> Snapshot is the process of Image level backup of the Database instance.
+
+--> Whatever exist in the database can be included into the snapshot.
+
+--> There are 2 types of snapshots available
+
+	- Automated
+	- Manual
+
+--> Automated snapshots will be created at a scheduled interval of time
+	ex: every day at 06:30 AM IST
+
+--> Manual snapshot is the process of creating a snapshot whenever is required.
+
+usecase: we create a manual snapshot, before any changes to the database.
+
+
+--> By using the snapshot we can recover the data which was accidentally deleted or lost.
+
+
+NOTE: 4 Records of data were created in to the database on 10-Nov-2025 at 07:32 PM
+
+An automated snapshot was created on 11-Nov-2025 at 06:30 AM IST, snapshot contains 4 records of Data.
+
+
+1. Simulate data loss on the Database, delete 2 records manually at 06:51 PM.
+
+
+2. Recover the deleted data using the automated snapshot created at 06:30AM IST
+
+
+Note:  Database and data will be recovered into a new database instance, instead of the existing database instance.
+
+	- Just the Database instance name is getting changed and all other are same.
+
+--> while restoring the database from the snapshot, we can change the following if required
+
+	- Deployment option (Single-AZ, Multi-AZ )
+	- DB instance identifier
+	- DB Instance Class (t3.small, t3.large etc..)
+	- Storage can be increased
+	- VPC
+	- Availability Zone
+	- Publicly Accessible or NOT
+
+--> We cannot change the Database Name, UserName & Password while restoring from the snapshot.
+
+
+NOTE: Newly restored DB Instance, gets a new Database Identifier.
+
+3. Connect to the restored DB Instance, and verify that it has all the 4 records of data in  "mydevdb" database. (use new endpoint of the restored DB Instance)
+
+
+Important points about Snapshots:
+---------------------------------
+
+--> We can copy snapshots to any region, so that we can create/restore the databases in any region using that copied snapshot.
+
+--> We can share the MANUAL snapshot with any other AWS accounts, but we cannot share the automated snapshots.
+
+--> We can migrate the snapshot from older DB engine version to the latest DB engine version, but is only for MySQL & PostgreSQL Databases.
+
+--> Snapshots can be exported and saved into S3 buckets also.
+
+
+
+4. Delete the Database Instance "MyFirstDBInstance" (Termination protection Enabled)
+
+	a) Disable "Termination Protection"
+	b) Delete the Database instance
+
+
+--> Automated Snapshots will be deleted automatically after a retention period or instantly based on the options selected.
+
+--> Manual snapshots will be retained forever, We must delete them manually.
+
+
+NOTE: Whatever the changes made to the database after the latest backup/snapshot cannot be recovered using the snapshot recovery process
+
+-> To overcome this challenge we have a process called Point in Time recovery (PIT Recovery)
+
+Point-in-Time recovery:
+------------------------
+
+
+--> PIT Recovery allows you to recover the database to any specific point in time
+
+ex: Latest automated backup was created at 07:01 PM and you can restore the database to 07:27PM.
+
+This uses Automated Daily Snapshots and Transactional logs continuously captured by RDS
+
+
+How PIT Recovery Works:
+------------------------
+
+--> RDS automatically backusup your daily DB and stores logs continuously in S3
+
+--> whenever you request a recovery using PIT Recovery, 
+	- RDS restores the last full snapshot before your target recovery time.
+	- It then replays all transactional logs upto the exact second what we specify.
+
+
+
+1. Create 4 records of Data to the existing database at 07:26 PM and make that the database contains 7 records in total
+
+	- Database latest automated snapshot was created at 07:04 PM  --> 4 records
+	- 3 more records were created at 07:26 PM 
+		-- Database has 7 records, but the latest automated snapshot has 4 records
+
+2. Delete any 3 records from the database at 07:36PM
+
+3. Restore the data using PIT Recovery by selecting the target time as 11-Nov-2025 at 07:35PM IST
+
+
+4. Connect to the restored Database instance (PIT Recovery) and observe it has all 7 records
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

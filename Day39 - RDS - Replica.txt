@@ -1,0 +1,90 @@
+Replica:
+--------
+
+--> Replica is a copy of your RDS database instance that replicates data asynchronously from the primary (Source) database.
+
+--> It is Mainly used for 
+	- Read Scalability (offload the read traffic )
+	- Disaster Recovery / Failover setups
+	- Reporting/ analytics without affecting the production
+
+
+1. Create a replica "Replica1" from the database "PITRecovery" and observe that all the existing data replicated to the Replica1
+
+	a) Create a Replica for "PITRecovery" Database instance
+	b) Connect to replica "replica1" and observe all 7 records exist
+	c) Also observe the roles of both database instance.
+
+
+Note: We can create the replica in any region, irrespective of the region of the Source Database instance.
+
+--> The moment we create a replica, the role of the source database instance will be Primary.
+
+2. Create few records in the Primary Database instance, and observe that the data ot replicated to the replica1.
+
+3. Create another replica "Replica2" in Mumbai region from the Primary DB Instance.
+
+4. Create a replica "Replica3" from an existing replica "Replica1".
+	a) Enable automated backups on Replica1
+	b) Create replica3 from replica1
+
+NOTE: To create a replica from any database instance, automated backups must be enabled with at least 1 day retention period.
+
+5. Create another replica "Replica4" from the Primary DB Instance
+
+6. Create few records in Replica1 and confirm that replicas are running in Read-Only Mode.
+
+
+
+Promote:
+--------
+
+--> When you promote a Read Replica, We are converting a read-only replica into a standalone, fully writable RDS instance.
+
+--> Once promoted:
+
+	- Replication from the source stops permanently
+	- The replica becomes Independent database instance
+	- You can use it as a new Database instance
+
+--> Whenever the Primary got deleted, then all the replicas of that primary will get promoted automatically.
+
+
+1. Promote the Replica "Replica4" and observe the role changes to "Instance"
+
+2. Create few records into Replica4 and observe it works in fully writable mode.
+
+3. Delete the Primary Database instance "PITRecovery" and observe that the Replica1 & Replica2 got promoted automatically
+
+4. Observe that the role of the Replcia1 becomes "primary" from "Source, Replica"
+
+--> Why because replica1 has a replica, and it is no more replica for "PITRecovery"
+
+5. Delete "Replica1" and observe that the associated replica "Replica3" got promoted to Instance role.
+
+6. Delete Replica2, Replica3 & Replica4 (CLEANUP)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

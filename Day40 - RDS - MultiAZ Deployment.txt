@@ -1,0 +1,109 @@
+Multi-AZ Deployment:
+--------------------
+
+--> in this deployment model, the copy of the database will be created in another Availability zone for High availability.
+
+--> Whenever there is issue with the hardware or the AZ of the database instance, then the copy of the database can provide the service from another availability zone.
+
+
+RDS offers 2 types of Multi-AZ deployments
+
+	1. Multi-AZ DB instance
+	2. Multi-AZ DB Cluster
+
+
+	MultiAZ   = PrimaryDB + Standby DB in another AZ
+
+
+Multi-AZ DB Instance:
+---------------------
+
+--> One primary Database on One standby database instance in a different AZ will be created.
+
+--> Data will be replicated from primary to Standby using synchronous replication.
+
+--> Always the standby instance kept idle, while the primary is healthy
+
+--> Whenever the primary is unhealthy due to hardware issues, networking issues then the standby becomes primary and offers high availability.
+
+
+Multi-AZ DB Cluster:
+--------------------
+
+--> One primary database and 2 standby (Readers) in 2 different AZ
+
+--> while the primary is healthy we can use the standby instances for serve read requests and reduce the load on the primary database.
+
+--> whenever the primary db instance has any issues, then one of these readers becomes primary and serve the users to maintain the high availability.
+
+Usecase: High Availability + High read workloads
+
+
+--> Multi-AZ DB cluster generates 2 endponts, writer and reader endpoints
+
+--> writer endpoint always points to the writer instance, and the reader endpoint connects both the reader instances.
+
+
+1. Create a MySQL db instance using Multi-AZ DB Instance
+
+2. Create a MySQL DB Instance using Multi-AZ DB Cluster
+
+
+NOTE: Multi-AZ DB Cluster is only supported for MySQL & PostgreSQL database engines, for other database engines we need to use Multi-AZ DB Instance.
+
+--> As MSSQL server and Oracle are licensed database engines and RDS offers 2 types of licensing options
+
+	- License included
+	- BYOL (bring Your Own License)
+
+--> If you choose License included, RDS provide the license for the RDS engine and they will charge you for "DB instance resources + DB Engine Software"
+
+	ex: MSSQL Server
+
+--> If you choose BYOL, RDS only charge you for the Database instance resources, and you are responsible to purchase the license and activate on RDS. Means you need to bring your own Database engine software license
+
+	ex: Oracle Database
+
+--> You cannot delete a writer instance or reader instance separately, you need to delete the entire cluster.
+
+--> Also you cannot add extra readers to the multi-AZ DB Cluster.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

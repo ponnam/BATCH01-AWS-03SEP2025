@@ -1,0 +1,106 @@
+Aurora:
+-------
+
+--> Aurora is a MySQL-compatible and PostgreSQL compatible Relational database engines that runs on AWS
+
+--> It is designed by AWS to be faster, more scalable, and more available than the normal RDS 
+
+AWS Claims:
+-----------
+
+	- Upto 5x faster than MySQL
+	- Upto 3x faster tha PostgreSQL
+	- Costs are lower compared to other DB engines.
+
+
+--> Aurora storage and compute are decoupled, storage layer and compute layer are not in the same host
+
+--> 6 copies of the database will be maintained across 3 AZ
+
+--> Auto-replicates and auto-heals
+
+--> Autoscaling supports upto 128 TB of database storage.
+
+--> Aurora Multi-AZ deployment can have 1 writer node and upto 15 Reader Nodes. ( Aurora replica)
+
+--> Storage is shared by all nodes - No sperate storage per instance.
+
+--> Automatic failover usually under 30 sec
+
+--> PIT restore is available.
+
+--> Aurora supports Serverless
+
+
+1. Create an Aurora cluster with Multi-AZ using MySQL Compatible mode.
+
+--> while creating the reader nodes, we can assign failover priority as tier-0, tier-1, tier-2 etc...
+
+--> whichever the reader is having the lowest tier (like tier-0) will have the highest priority to become as a writer in case of failover.
+
+example:
+
+	Instance1	-	writer		-
+	Instance2	-	Reader		-	Tier-1
+	Instance3	-	reader		-	Tier-3
+	Instance4	-	Reader		-	Tier-2
+
+--> whenever the Instance1 has some issues, then the Instance2 becomes writer. Instance is having the lowest tier among all other readers.
+
+--> if Instance2 also failed, Then Instance4 becomes Writer as the tier-2 is the lowest tier than tier-4.
+
+--> Aurora also supports a feature called backtrack
+
+BackTrack:
+----------
+
+--> Backtrack is an Amazon aurora MySQL feature that lets you rewind your database to a previous point with in seconds, without restoring snapshots.
+
+--> its Like UNDO button.
+
+--> We need to enable this backtrack feature at the time of Database creation, need to choose a time window.
+
+--> backtrack has ability to rewind the database upto 72 hours depends on the backtrack windows which we configured on the database aurora 
+
+
+2. Create 5 records of data into the Aurora database at 07:06 PM
+
+3. Create 2 more readers, reader3 and reader4.
+
+4. delete 3 records from the database at 07:10 PM
+
+5. use backtrack feature to recover the data by selecting the time 07:09 PM.
+
+	Database will be re-winded to 07:08 PM
+
+
+6. Delete the current writer instance, and observe that one of the readers become a new writer.
+
+7. Delete the current Writer instance, and observe that one of the reader is the new writer
+
+8. Delete the current Writer instance, and observe that one of the reader is the new writer
+
+9. Delete the current writer, and observe that there is no readers to be a writer.
+
+10. After deleting all the datbases under aurora cluster, create a new reader and observe taht it will be a new writer.
+
+11. Delete the last writer, and cluster also to cleanup.
+
+
+
+
+
+
+RDS Proxy:
+----------
+
+RDS Proxy is a fully managed, highly available database proxy that improves application scalability, resiliency, and security.
+
+
+
+
+
+
+
+
+

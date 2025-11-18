@@ -1,0 +1,124 @@
+DynamoDB:
+---------
+
+--> DynamoDB is a fully Managed NoSQL database service provided by AWS
+
+--> It gives you single-digit milli second performance
+
+--> Automatically scales based on traffic, and requires zero server management
+
+
+Features:
+---------
+
+	- NoSQL Databse
+	- Fully Managed by AWS
+	- Extremely Fast
+	- Auto Scaling
+	- Highly Available
+	- pay per use
+
+--> NoSQL database are recommended to store key-Value pairs
+
+--> DynamoDB is Suitable for 
+
+	- Serverless Apps
+	- High Traffic API
+	- Gaming LeaderBoards
+	- IOT Devices data
+	- Event Driven Apps
+
+1. Create a DynamoDB table "StudentData" and observe the options available for DynamoDB.
+
+
+TableClass: Select table class to optimize your table's cost based on your workload requirements and data access patterns.
+
+- DynamoDB Standard: The default general-purpose table class. Recommended for the vast majority of tables that store frequently accessed data, with throughput (reads and writes) as the dominant table cost.
+
+- DynamoDB Standard-IA: Recommended for tables that store data that is infrequently accessed, with storage as the dominant table cost.
+
+Read/write capacity settings: We need to choose Read & Write capacity as pe the requirement so that read and write operations will be effective
+
+	- On-Demand	- Based on the usage, capacity will be adjust to provide the best performance with lowest possible charges
+
+	- provisioned	- We need to chose the Read and Write capacity for the table, and will be charged as per the capacity configurations. Autoscaling can be enabled with provisioned capacity mode.
+
+--> Read and Write capacities are decoupled, which doesn't impact others.
+
+
+2. Create some data into the DynamoDB table
+
+3. Observe the automated snapshots and PITRecovery, enable it if not enabled.
+	- Enable PITRecovery and select retention period.
+
+Note: ByDefault, PITRecovery is not enabled on DynamoDB Table
+
+4. Create 3 more record into the DynamoDB table - Total 6 Records  @ 07:02 PM
+
+5. Create a Manual Snapshot from the table @ 07:03 PM
+
+6. Delete any 2 records from the DynamoDB table at 07:06 PM IST
+
+7. Recover the deleted data using PIT Recovery by selecting recovery time as 07:05 PM IST
+
+
+Elastic Cache:
+--------------
+
+--> Is a fully managed In-Memory cache service used to improve the application speed by caching the frequently accessed data.
+
+--> so that the data will be served from the elastic cache, instead of loading from the database everytime.
+
+--> and we can reduce the load on the production database.
+
+--> It supports 2 Engines
+
+	- Redis
+	- Memcached
+
+
+Why use Elastic Cache:
+----------------------
+
+	- Superfast
+	- Reduces load on Databases ( RDS, DynamoDB)
+	- Automatically Scales
+	- Multi-AZ with Failover (Redis)
+	- Fully Managed by AWS.
+
+
+
+====================================
+
+
+RedShift:
+---------
+
+Categories of Databases:
+
+	- OLTP	- Online Transactional Processing
+	- OLAP	- Online Analytical Processing
+
+
+Amazon redshift is a fully managed, petabyte-scale data warehouse service from AWS.
+
+--> it is designed for
+	- Analytics
+	- Big Data Processing
+	- Running SQL Queries on huge datasets
+	- BI and Reporting
+
+NOTE: Redshift is not a transactional Database like RDS.
+
+--> It is for OLAP  -- Large read-heavy applications
+
+--> It uses massive Parallel processing
+
+--> Highly Scalable
+
+--> Integrates with S3, Glue, athena, Kinesis (to build data lakes and dataware house)
+
+--> SQL Compatible
+
+
+

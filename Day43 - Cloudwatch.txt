@@ -1,0 +1,77 @@
+CloudWatch:
+-----------
+
+--> Amazon CloudWatch is a monitoring, Observability and alerting service for AWS. On-Prem and Hybrid environments
+
+--> It collects metrics, logs, events to help you monitor the resource health, application performance and operational issues in the realtime
+
+Metric:
+-------
+
+Metric is the resource which we are going to monitor
+	ex: CPUUtilization, Network utilization etc..
+
+--> On AWS CloudWatch there are 2 types of metrics available.
+
+	- Default Metric --> Default information which is collected by cloudwatch
+	- Custom metric --> we need to configure to collect the information about the non-default metrics. ex: Memory Utilization etc....
+
+
+--> By default, default metrics are collected without any additional agents to be installed in the instances
+
+--> To collect the custom metrics, we need to install cloudwatch agent.
+
+--> In the cloudwatch we get Dashboards, alarms etc...
+
+--> CloudWatch also provide log collection feature, We can store the logs of your application in cloud watch using LogGroups
+
+
+--> On the Instance, there are 2 types of monitorings available
+
+	1. Default Monitoring	- Information will be collected for every 5 mins
+	2. Detailed/ enhanced Monitoring - Information will be collected for every 1 min
+
+--> Default Monitoring is free of cost, where as the detailed monitoring is available at extra cost.
+
+
+1. Navigate to the CloudWatch console and observe the metrics of existing EC2 instances
+
+
+2. Create a Dashboard to view the CPUUtilization of All Production EC2 instances
+
+
+--> CloudWatch also provides alerting service, by using which we can send alerts whenever there is an alarm.
+
+
+example: I want to receive an email alert whenever the CPUUtilization is more than 70%
+
+	Metric = CPUUtilization
+	Threshold = 70%
+	Alert = Send an Email
+
+
+--> Whenever the CPUUtilization is less than 70% then the state is Healthy, and whenever the CPUUtilization is more than 70% then the state will be "In-Alarm"
+
+--> Whenever the state is In-Alarm, CloudWatch will trigger an alert and send an email to the subscribed EMAIL addresses.
+
+--> To send this kind of notifications, we will integrate a service SNS with the cloudwatch
+
+--> SNS stands for Simple Notification service, which is a subscription based service.
+
+--> Whoever subscribes to a SNS topic, they will get notified.
+
+
+3. Create an alarm for Server102, and create and alert to send an email whenever the CPU Utilization is more than 70%
+
+
+
+
+
+
+
+
+
+
+
+
+

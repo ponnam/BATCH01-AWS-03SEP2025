@@ -1,0 +1,62 @@
+Elastic Beanstalk:
+------------------
+
+--> Elastic Beanstalk is a Platform-as-a-Service (PaaS) that lets you deploy the Web apps without managing the servers
+
+--> AWS handles
+	- EC2
+	- Autoscaling
+	- LoadBalancing
+	- Health Monitoring
+
+--> Your job is to provide the application code (JAR, WAR, ZIP, Dcoker Image)
+
+--> AWS Job is to Run it in a scalable, highly available environment.
+
+
+
+Components:
+-----------
+
+Application --> root container holding your environment
+Environment --> A running version of your application
+
+Environment Tier --> Webserver (http) or Worker (background Jobs)
+
+Platform --> Java, Python, node.js, Go, ruby, .net, PHP, Docker etc..
+
+Versions --> Uploaded revision of your code
+
+Configuration --> Instance Type, scaling, load balancer, capacity settings
+
+Health Monitoring --> Basic or Enhanced
+
+
+1. Deploy a Java sample application using the elastic beanstalk
+
+2. Deploy Your custom Java JAR file in to the existing JAVA environment and observe the webapp is deployed successfully
+
+	- .jar must be uploaded as a .zip file only
+
+
+Whenever we delete the application, all the associated resources will be terminated automatically
+
+	- EC2 instance
+	- Security Group
+	- etc..
+
+3. Delete the Elastic Beanstalk application and observe all the resources related to that platform got deleted automatically.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

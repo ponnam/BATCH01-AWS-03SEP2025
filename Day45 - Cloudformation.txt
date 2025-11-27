@@ -1,0 +1,84 @@
+Cloud Formation:
+----------------
+
+--> It is IaC ( Infrastructure as a code)
+
+--> Is an IaC service that lets you create, update, and delete AWS resources using template
+
+--> Template is a file describing your AWS infrastructure, is written in JSON or YAML
+
+
+Benefits:
+---------
+
+- 100% automated provisioning
+- Reproducible environments
+- Safe updates with changeset
+- Drift detection
+- Works like terraform, but native to AWS
+
+
+Key Components:
+---------------
+
+Template --> YAML/JSON file describing your AWS infrastructure
+
+Stack --> A deployed instances of the template
+
+Change Set --> Preview of the changes before applying
+
+Drift --> Difference between template and Actual resources
+
+Stack set --> Deploy the same template across multiple accounts & Regions.
+
+
+
+1. Observe a sample template available on AWS Documentation site
+
+2. Create an EC2 instance using CloudFormation template
+
+3. Update the instance type from t2.micro to t2.small
+	- Create Changeset with the required changes
+	- Execute the change set
+
+4. Observe the instance type of the EC2 instance.
+
+
+--> If we delete the CloudFormation stack all the resources Created with the template will be deleted automatically.
+
+--> With the current stack the following resources were created
+
+	- EC2 Instance
+	- Security Group
+
+5. Delete the cloud formation stack and observe the resources were automatically deleted.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

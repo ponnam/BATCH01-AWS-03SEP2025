@@ -1,0 +1,74 @@
+Lambda:
+-------
+
+--> AWS managed Function as a service
+
+--> AWS Lambda us a serverless compute service that lets you run code without managing servers.
+
+
+--> Upload the code, choose memory and lambda executes it when triggered.
+
+--> You have to pay for the execution time only.
+
+
+Key Features:
+-------------
+
+	- Serverless
+	- Event Driven Execution
+	- Automatic scaling
+	- Pay per use pricing
+	- Supports Many Languages
+		- Python
+		- Node.js
+		- java
+		- Go
+		- .NET
+		- Ruby
+
+
+--> Lambda handles 1000 concurrent execution by default, which can be increased as per the requirement by sending a support request.
+
+
+1. Deploy a Sample application along with the Lambda function which can compress the images from source bucket and the compressed images to be stored in Destination bucket.
+
+	a) Destination bucket must exist prior to the deployment
+		- Create destination bucket first
+	b) Source bucket must NOT exist prior to deployment
+		- Source bucket will be created automatically by the sample app deployment
+
+
+2. Upload a High Quality image into Source bucket
+
+3. Observe that the lambda function triggered and compressed image generated and stored in the destination bucket.
+
+4. upload Multiple Images at a time
+
+
+--> Cold start --> First invocation after the deployment, A new environment will be created for the very first time and it is very slow
+
+--> Warm Start --> all the next invocation will reuse the above existing environment and it will be very fast.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

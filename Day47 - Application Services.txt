@@ -1,0 +1,136 @@
+Simple Notification Service - SNS:
+----------------------------------
+
+--> SNS is a fully managed subscription based messaging service that lets you send notifications to the subscribers
+
+
+	- Highly Scalable
+	- Serverless
+	- Supports push based messaging
+	- Subscribers receive the message from a topic.
+
+
+Publisher --> Sends messages to SNS Topic
+
+Subscriber --> to whom the message to be deliver
+
+Possible subscriber types:
+	
+	- Email Address
+	- SQS Queue
+	- SMS
+	- Lambda Function
+	- etc...
+
+
+Message --> Content published to SNS Topic upto 256 KB
+
+Each topic supports multiple subscribers, message published to the topic will be delivered to all subscribers
+
+
+
+1. Create SNS topic "MyFirstTopic" and add 2 email addresses as subscribers
+
+2. those 2 email users, receive a subscription confirmation email and they need to confirm it.
+
+3. Publish a message to the topic, and observe the subscribers received the email messages.
+
+4. Delete the topic and delete the subscriptions
+
+
+Simple Queue Service - SQS:
+---------------------------
+
+--> SQS is a fully managed message queue service used to decouple and scale the distributed applications
+
+	- Serverless
+	- Highly Scalable
+	- Fully Managed queue
+	- Handles millions of messages
+	- Eliminates the need of message brokers like RabbitMQ or ActiveMQ
+
+
+--> SQS offers 2 types of Queues
+	- Standard Queue
+	- FIFO Queue
+
+Standard Queue:
+---------------
+
+	- High Throughput
+	- At-least-once delivery
+	- Best-effort Ordering
+	- Default Queue (Best for most use cases)
+
+
+FIFO Queue:
+-----------
+
+	- First-In First-Out
+	- Exactly Once processing
+	- Lower Through Put.
+	- Recommended for Financial transactions, order, billing systems
+
+
+
+
+
+Simple Email Service - SES:
+---------------------------
+
+--> SES is a scalable, cost-effective, serverless email sending service
+
+--> Used for:
+
+	- Transactional Emails
+	- Marketing/ Bulk emails
+	- Notifications
+	
+
+--> SES Is Highly Reliable and integrates with other AWS services.
+
+
+On AWS SES is available in 2 environments:
+	
+	- Sandbox
+	- Production
+
+--> By default, you get the SES running in the sandbox environment. Limitations applicable
+
+--> By Creating a support request, we can convert the sandbox into production and avoid the limitations.
+
+--> If you are using the sandbox environment, then You must verify the sender and receiver email addresses. where as in the production we need to verify the sender email address.
+
+
+--> ON SES, there is a reputation dashboard which displays
+
+	- Bounce Rate
+	- Complaint Rate
+	- Delivery Rate
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
